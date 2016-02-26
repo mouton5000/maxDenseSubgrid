@@ -1,0 +1,96 @@
+% Version 1
+
+\documentclass[10pt]{llncs}
+
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\let\proof\relax
+\let\endproof\relax
+
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{changepage}
+\usepackage{todonotes}
+\usepackage{comment}
+
+\newcommand{\QQIF}[1] {\State \textbf{if} (#1)}
+\newcommand{\QQRETURN} {\textbf{return} }
+
+\title{The maximum grid contraction problem}
+\author{Dimitri Watel\inst{1,2} 
+\and
+Pierre-Louis Poirion\inst{1,3}}
+\institute{
+ CEDRIC-CNAM, 292 rue du faubourg Saint Martin, 75003, Paris, FRANCE
+\and
+ ENSIIE, 1 Square de la résistance, Evry, FRANCE
+  \email{dimitri.watel@ensiie.fr, }
+\and
+ENSTA Paristech
+  \email{pierre-louis.poirion@ensta.fr}
+}
+
+\usepackage{caption}
+\captionsetup[table]{aboveskip=5pt, }
+
+\setcounter{secnumdepth}{3}
+
+
+\newcommand{\gridsize}{0.5}
+\newcommand{\prgrid}[3]{\draw[step=\gridsize,gray,very thin] (#1) grid (\gridsize*#3,\gridsize*#2);}
+\newcommand{\prtline}[3]{}%\draw[] ($(#1)+(0,\gridsize*#2)$) -- ($(#1)+(\gridsize*#3,\gridsize*#2)$);}
+\newcommand{\prtcolumn}[3]{}%\draw[] ($(#1)+(\gridsize*#2,0)$) -- ($(#1)+(\gridsize*#2,\gridsize*#3)$);}
+\newcommand{\prvtline}[3]{\draw[very thick] ($(#1)+(0,\gridsize*#2)$) -- ($(#1)+(\gridsize*#3,\gridsize*#2)$);}
+\newcommand{\prvtcolumn}[3]{\draw[very thick] ($(#1)+(\gridsize*#2,0)$) -- ($(#1)+(\gridsize*#2,\gridsize*#3)$);}
+\newcommand{\prvtdline}[3]{\draw[very thick,dotted] ($(#1)+(0,\gridsize*#2)$) -- ($(#1)+(\gridsize*#3,\gridsize*#2)$);}
+\newcommand{\prvtdcolumn}[3]{\draw[very thick,dotted] ($(#1)+(\gridsize*#2,0)$) -- ($(#1)+(\gridsize*#2,\gridsize*#3)$);}
+\newcommand{\prbul}[3]{\draw ($(#1)+(#3*\gridsize-0.5*\gridsize,#2*\gridsize-0.5*\gridsize)$) node {$1$};}
+
+
+\renewenvironment{comment}{\begingroup\sffamily\color{red} \itshape}{\endgroup}
+
+\begin{document}
+
+
+
+
+\theoremstyle{plain}
+\newtheorem{corol}{Corollary}
+
+\maketitle
+
+\begin{abstract}
+TODO
+\textit{Keywords:} Complexity, Approximation algorithm
+\end{abstract}
+
+\input{intro}
+\input{definition}
+\input{complexity}
+\input{approximability}
+\input{linear_programming}
+\input{conclu}
+
+
+
+
+
+
+
+
+
+\bibliographystyle{splncs}
+\bibliography{edla}
+
+\end{document}

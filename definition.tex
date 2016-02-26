@@ -1,0 +1,26 @@
+\section{Problem definition}
+
+\begin{comment}
+\begin{itemize}
+\item Definir $L_i$ et $C_j$, les matrices de contraction. 
+\item Définir la contraction par 1 ligne ou 1 colonne
+\item Définir la contraction par plusieurs lignes et/ou plusieurs colonnes
+\item Définir les contractions légales. 
+\item Définir la densité
+\item Définir le problème
+\item Version programme mathématique?
+\end{itemize}
+\end{comment}
+
+\begin{definition} \emph{Contraction of a line or of a column.}
+Let $M$ be a binary matrix with $p$ lines and $i \in \llbracket 1; p-1 \rrbracket$, the matrix $M'$ obtained by \emph{contracting} the line $i$ contains $p-1$ lines : the $i-1$ first lines of $M$, the line obtained by adding the $i$-th and the $i+1$-th lines of $M$, and the $p - (i+1)$ last lines of $M$. We can similarly define the contraction of a column.
+\end{definition}
+
+\begin{definition}
+Let $M$ be a binary matrix of size $p \times q$, $I$ a subset $\llbracket 1;p-1 \rrbracket$ and $J$ a subset $\llbracket 1;q-1 \rrbracket$. The matrix $C(M,I,J)$ of size $(p-|I| \times q- |J|)$ is obtained by contracting, in the descending order, every line $i \in I$ of $M$ and every column $j \in J$ of $M$. 
+\end{definition}
+
+\begin{problem}
+\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ containing $n$ 1 and $p \cdot q - n$ 0, the Maximum Matrix Contraction problem consists in the search for a subset $I$ of $\llbracket 1; p-1 \rrbracket$ and $J$ of $\llbracket 1 ; q-1 \rrbracket$ such that $C(M,I,J)$ does contains only 0 and 1 and maximises $d(C(M,I,J))$.
+
+\end{problem}

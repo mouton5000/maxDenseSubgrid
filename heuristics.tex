@@ -1,0 +1,19 @@
+
+\section{Heuristics}
+
+\begin{comment}
+\begin{itemize}
+\item Avant toute chose tester Greedy VS LCL VS Neighborization sur des grosses instances (jusqu'à combien va le LCL?).
+\item Présenter ceux qui marchent et ceux qui marchent pas
+\item Contreexemple? Explication rapide du pire cas?
+\end{itemize}
+\end{comment}
+
+This section is dedicated to describing a simple and fast heuristic. Note that this heuristic is, in the worst case, a $2\sqrt{n}$-approximation.
+
+The LCL algorithm is divided into two parts : the LC (Line Column) part and the CL (Column Line) part. The LC computes and return a maximal feasible solution $M^{LC}$ by contracting a maximal set of lines $I^{LC}$ and, then, by contracting a maximal set of columns $J^{LC}$. The CL part computes and returns a maximal feasible solution $M^{CL}$ by starting with the columns and ending with the lines. The LCL algorithm then returns the solution with the maximum density.
+
+
+\subsection{Numerical results}
+
+\todo{Tester, mettre sous forme de tableau, commenter.}
