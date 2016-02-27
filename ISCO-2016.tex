@@ -23,6 +23,8 @@
 \usepackage{changepage}
 \usepackage{todonotes}
 \usepackage{comment}
+\usepackage{blkarray}
+
 
 \newcommand{\QQIF}[1] {\State \textbf{if} (#1)}
 \newcommand{\QQRETURN} {\textbf{return} }
@@ -59,6 +61,8 @@ ENSTA Paristech
 
 
 \renewenvironment{comment}{\begingroup\sffamily\color{red} \itshape}{\endgroup}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle T}}}
+
 
 \begin{document}
 

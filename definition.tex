@@ -1,26 +1,69 @@
 \section{Problem definition}
 
-\begin{comment}
-\begin{itemize}
-\item Definir $L_i$ et $C_j$, les matrices de contraction. 
-\item Définir la contraction par 1 ligne ou 1 colonne
-\item Définir la contraction par plusieurs lignes et/ou plusieurs colonnes
-\item Définir les contractions légales. 
-\item Définir la densité
-\item Définir le problème
-\item Version programme mathématique?
-\end{itemize}
-\end{comment}
+The following definitions formalize the problem we want to solve with binary matrices. A binary matrix is a matrix with entries from $\{0,1\}$. Such a matrix modelizes a grid in which each dot is a 1 in the matrix.
 
-\begin{definition} \emph{Contraction of a line or of a column.}
-Let $M$ be a binary matrix with $p$ lines and $i \in \llbracket 1; p-1 \rrbracket$, the matrix $M'$ obtained by \emph{contracting} the line $i$ contains $p-1$ lines : the $i-1$ first lines of $M$, the line obtained by adding the $i$-th and the $i+1$-th lines of $M$, and the $p - (i+1)$ last lines of $M$. We can similarly define the contraction of a column.
+\begin{definition}
+Let $M$ be a binary matrix with $p$ lines and $q$ columns. For each $i \in \llbracket 0; p-2 \rrbracket$ and each $j \in \llbracket 0; q-2 \rrbracket$, we define the \emph{line contraction matrix} $L_i$ and the \emph{column contraction matrix} $C_j$ by 
+
+$$L_i = \hspace{0.2cm}\begin{blockarray}{ccccccccccccc}
+& & & & & & & & & & &\\
+\begin{block}{(cccccccccc)ccc}
+1      &  0     & \cdots & 0      & 0 & 0 &  0  & 0 & \cdots & 0 &&&\\
+0      &  1     & \cdots & 0      & 0 & 0 &  0  & 0 & \cdots & 0 &&&\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots &  \vdots  & \vdots & \ddots  & \vdots  &&&\\
+0      &   0    &\cdots  & 1      & 0 & 0 &  0  & 0 & \cdots & 0 &&&\\ 
+0      &   0    &\cdots  & 0      & 1 & 1 &  0  & 0 & \cdots & 0 & && i\\ 
+0      &   0    &\cdots  & 0      & 0 & 0 &  1  & 0 & \cdots & 0 &&&\\
+0      &   0    &\cdots  & 0      & 0 & 0 &  0  & 1 & \cdots & 0 &&&\\ 
+\vdots      &   \vdots    &\ddots  & \vdots     & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots  &&&\\
+0      &   0    &\cdots  & 0      & 0 & 0  &  0 & 0 & \cdots & 1 &&&\\
+0      &   0    &\cdots  & 0      & 0 & 0      &   0    & 0      &\cdots  & 0 &&&\\
+\end{block}
+\end{blockarray}
+\hspace{0.5cm}
+C_j = \hspace{0.2cm}\begin{blockarray}{ccccccccccc}
+ & & & & j & & & & &\\
+\begin{block}{(cccccccccc)c}
+1      &  0     & \cdots & 0      & 0 & 0 &  0  & \cdots & 0 & 0 &\\
+0      &  1     & \cdots & 0      & 0 & 0 &  0  & \cdots & 0 & 0 &\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots &  \vdots  & \ddots & \vdots  & \vdots  &\\
+0      &   0    &\cdots  & 1      & 0 & 0 &  0  & \cdots & 0 & 0 &\\ 
+0      &   0    &\cdots  & 0      & 1 & 0 &  0  & \cdots & 0 & 0 &\\ 
+0      &   0    &\cdots  & 0      & 1 & 0 &  0  & \cdots & 0 & 0 &\\
+0      &   0    &\cdots  & 0      & 0 & 1 &  0  & \cdots & 0 & 0 &\\ 
+0      &   0    &\cdots  & 0      & 0 & 0  &  1 & \cdots & 0 & 0 &\\
+\vdots      &   \vdots    &\ddots  & \vdots     & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots  &\\
+0      &   0    &\cdots  & 0      & 0 & 0      &   0    &\cdots  & 1      & 0 &\\
+\end{block}
+\end{blockarray}
+$$
 \end{definition}
 
 \begin{definition}
-Let $M$ be a binary matrix of size $p \times q$, $I$ a subset $\llbracket 1;p-1 \rrbracket$ and $J$ a subset $\llbracket 1;q-1 \rrbracket$. The matrix $C(M,I,J)$ of size $(p-|I| \times q- |J|)$ is obtained by contracting, in the descending order, every line $i \in I$ of $M$ and every column $j \in J$ of $M$. 
+Let $M$ be a binary matrix of size $p \times q$, $I = \{i_1, i_2, \dots, i_{|I|}\}$ a sublist of $\llbracket 1;p-1 \rrbracket$ and $J = \{j_1, j_2, \dots, j_{|I|}\}$ a sublist of $\llbracket 1;q-1 \rrbracket$. We assume $I$ and $J$ are sorted. We define the \emph{contraction $C(M,I,J)$ of the lines $I$ and the columns $J$ of $M$} by the following matrix
+$$
+C(M,I,J) = \left(\prod\limits_{k = 1}^{|I|} L_{i_k}\right) \cdot M \cdot \left(\prod\limits_{k = |J|}^{1} C_{j_k}\right)
+$$
+\end{definition}
+
+\begin{definition}
+	A contraction $C(M,I,J)$ is said \emph{legal} if and only if $C(M,I,J)$ is a binary matrix.
+\end{definition}
+
+\begin{definition}
+	Let $M$ be a binary matrix of size $p \times q$. The \emph{density} is the value
+	$$ 
+	d(M) = \sum\limits_{i,j | M_{i,j} = 1} \left(\left(\sum\limits_{\delta = -1}^1 \sum\limits_{\gamma = -1}^1  M_{i+\delta,j+\gamma}\right) - 1 \right)
+	$$
 \end{definition}
 
 \begin{problem}
-\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ containing $n$ 1 and $p \cdot q - n$ 0, the Maximum Matrix Contraction problem consists in the search for a subset $I$ of $\llbracket 1; p-1 \rrbracket$ and $J$ of $\llbracket 1 ; q-1 \rrbracket$ such that $C(M,I,J)$ does contains only 0 and 1 and maximises $d(C(M,I,J))$.
-
+	\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ containing $n$ ones, the Maximum Matrix Contraction problem consists in the search for a legal contraction $C(M,I,J)$ of $M$ maximizing $d(C(M,I,J))$.
 \end{problem}
+
+\begin{comment}
+Doit-on parler du programme mathématique trivial ici?
+\end{comment}
+
+
+
