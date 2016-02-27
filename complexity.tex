@@ -29,6 +29,6 @@ Thus, there is a clique of size $K$ if and only if there is a feasible solution 
 
 \end{proof}
   
-The Maximum Clique problem cannot be approximated to within $|V|^{\frac{1}{2} - \varepsilon}$ in polynomial time unless P = NP \cite{Hastad1999}. Unfortunately, the previous reduction cannot be used to prove the same results occurs for MMC. Indeed, the density of any feasible solution of the MMC instance we produce is between $d_0 + 1$ and $d_0 + |V|$, with $d_0 = O(|V|^2 - |E|)$. Consequently, the optimal density is at most $(1 + 1/|V|)$ times the worst density. A way to prove a high inapproximability result would be to modify the reduction such that the gap between the optimal solution and another feasible solution increase.  
+The Maximum Clique problem cannot be approximated to within $|V|^{\frac{1}{2} - \varepsilon}$ in polynomial time unless P = NP \cite{Hastad1999}. Unfortunately, the previous reduction cannot be used to prove a negative approximability result occurs for MMC. Indeed, the density of any feasible solution of the MMC instance we produce is between $d_0 + 1$ and $d_0 + |V|$, with $d_0 = O(|V|^2 - |E|)$. Consequently, the optimal density is at most $(1 + 1/|V|)$ times the worst density. A way to prove a high inapproximability ratio for MMC would be to modify the reduction such that the gap between the optimal solution and another feasible solution increase.
 
-In the next section, we prove that such a result would tight the approximability of MMC as there are $\sqrt{n}$-approximation algorithm for this problem.
+In the next section, we prove that a $n^{\frac{1}{2} - \varepsilon}$ inapproximability ratio would tight the approximability of MMC as there are $\sqrt{n}$-approximation algorithm for this problem.
