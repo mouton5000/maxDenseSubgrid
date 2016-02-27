@@ -1,0 +1,44 @@
+\begin{figure}
+\centering
+		\begin{tikzpicture}
+		\coordinate (O) at (0,0);
+
+    \prgrid{O}{4}{4}
+    
+    \prbul{O}{1}{1}
+    \prbul{O}{3}{3}
+    \draw ($(O)+(0.25,-0.5)$) node {$c_i$};
+    \draw ($(O)+(-0.5,0.25)$) node {$l_i$};
+    \draw ($(O)+(2,-1)$) node {$(\alpha_i)$};
+    \end{tikzpicture}
+		\begin{tikzpicture}
+		\coordinate (O) at (0,0);
+
+    \prgrid{O}{4}{4}
+    
+    \prbul{O}{1}{1}
+    \prbul{O}{2}{2}
+    \draw ($(O)+(0.25,-0.5)$) node {$c_i$};
+    \draw ($(O)+(-0.5,0.25)$) node {$l_j$};
+    \draw ($(O)+(2,-1)$) node {$(\beta_{i,j})$};
+    \end{tikzpicture}
+		\begin{tikzpicture}
+		\coordinate (O) at (0,0);
+
+    \prgrid{O}{4}{5}
+    
+    \prbul{O}{1}{1};
+    \prbul{O}{2}{3};
+    \prbul{O}{3}{3};
+    \prbul{O}{3}{5};
+    \prbul{O}{4}{5};
+    \prbul{O}{4}{1};
+    
+    \draw ($(O)+(0.25,-0.5)$) node {$1$};
+    \draw ($(O)+(-0.5,0.25)$) node {$l_i$};
+    \draw ($(O)+(2,-1)$) node {$(\gamma_i)$};
+    \end{tikzpicture}
+
+\caption{The three gadgets of the reduction. We specify on each gadget the indexes of its lines and columns.}
+   \label{fig:reduction:gadgets}
+\end{figure}

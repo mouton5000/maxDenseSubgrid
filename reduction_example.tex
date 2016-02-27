@@ -1,0 +1,160 @@
+\begin{figure}
+\centering
+
+		\begin{tikzpicture}
+		\tikzset{tinoeud/.style={draw, circle, minimum height=0.1cm}}
+		\node[tinoeud] (U) at (0,0) {};
+		\node[tinoeud] (V) at (2,0) {};
+		\node[tinoeud] (W) at (0,2) {};
+		\node[tinoeud] (T) at (2,2) {};
+
+    \draw (U) -- (V);
+    \draw (V) -- (W);
+    \draw (W) -- (U);
+    \draw (W) -- (T);
+
+    \draw (U) node {$1$};
+    \draw (V) node {$2$};
+    \draw (W) node {$3$};
+    \draw (T) node {$4$};
+
+		\end{tikzpicture}
+
+		\begin{tikzpicture}
+		
+		\coordinate (O) at (0,0);
+
+    \prgrid{O}{22}{22}
+
+    \prvtline{O}{6}{22}
+    \prvtline{O}{10}{22}
+    \prvtline{O}{14}{22}
+    \prvtline{O}{18}{22}
+    
+    \prvtcolumn{O}{6}{22}
+    \prvtcolumn{O}{10}{22}
+    \prvtcolumn{O}{14}{22}
+    \prvtcolumn{O}{18}{22}
+    
+    \prvtdline{O}{7}{22}
+    \prvtdline{O}{11}{22}
+    \prvtdline{O}{15}{22}
+    \prvtdline{O}{19}{22}
+    
+    \prvtdcolumn{O}{7}{22}
+    \prvtdcolumn{O}{11}{22}
+    \prvtdcolumn{O}{15}{22}
+    \prvtdcolumn{O}{19}{22}
+    
+    \draw ($(O)+(-0.5,4)$) node {$v_1$};
+    \draw ($(O)+(-0.5,6)$) node {$v_2$};
+    \draw ($(O)+(-0.5,8)$) node {$v_3$};
+    \draw ($(O)+(-0.5,10)$) node {$v_4$};
+    
+    \draw ($(O)+(4,-0.5)$) node {$v_1$};
+    \draw ($(O)+(6,-0.5)$) node {$v_2$};
+    \draw ($(O)+(8,-0.5)$) node {$v_3$};
+    \draw ($(O)+(10,-0.5)$) node {$v_4$};
+
+    \prbul{O}{1}{1};
+    \prbul{O}{1}{2};
+    \prbul{O}{1}{3};
+    \prbul{O}{1}{4};
+    \prbul{O}{1}{5};
+    \prbul{O}{1}{6};
+    
+    \prbul{O}{2}{1};
+    \prbul{O}{3}{1};
+    \prbul{O}{4}{1};
+    \prbul{O}{5}{1};
+    \prbul{O}{6}{1};
+ 
+    \prbul{O}{7}{1};
+    \prbul{O}{8}{3};
+    \prbul{O}{9}{3};
+    \prbul{O}{9}{5};
+    \prbul{O}{10}{5};
+    \prbul{O}{10}{1};
+ 
+    \prbul{O}{11}{1};
+    \prbul{O}{12}{3};
+    \prbul{O}{13}{3};
+    \prbul{O}{13}{5};
+    \prbul{O}{14}{5};
+    \prbul{O}{14}{1};
+ 
+    \prbul{O}{15}{1};
+    \prbul{O}{16}{3};
+    \prbul{O}{17}{3};
+    \prbul{O}{17}{5};
+    \prbul{O}{18}{5};
+    \prbul{O}{18}{1};
+ 
+    \prbul{O}{19}{1};
+    \prbul{O}{20}{3};
+    \prbul{O}{21}{3};
+    \prbul{O}{21}{5};
+    \prbul{O}{22}{5};
+    \prbul{O}{22}{1};
+		
+ 
+    \prbul{O}{1}{7};
+    \prbul{O}{3}{8};
+    \prbul{O}{3}{9};
+    \prbul{O}{5}{9};
+    \prbul{O}{5}{10};
+    \prbul{O}{1}{10};
+ 
+    \prbul{O}{1}{11};
+    \prbul{O}{3}{12};
+    \prbul{O}{3}{13};
+    \prbul{O}{5}{13};
+    \prbul{O}{5}{14};
+    \prbul{O}{1}{14};
+ 
+    \prbul{O}{1}{15};
+    \prbul{O}{3}{16};
+    \prbul{O}{3}{17};
+    \prbul{O}{5}{17};
+    \prbul{O}{5}{18};
+    \prbul{O}{1}{18};
+ 
+    \prbul{O}{1}{19};
+    \prbul{O}{3}{20};
+    \prbul{O}{3}{21};
+    \prbul{O}{5}{21};
+    \prbul{O}{5}{22};
+    \prbul{O}{1}{22};
+
+
+    \prbul{O}{7}{7};
+    \prbul{O}{9}{9};
+
+    \prbul{O}{11}{11};
+    \prbul{O}{13}{13};
+
+    \prbul{O}{15}{15};
+    \prbul{O}{17}{17};
+
+    \prbul{O}{19}{19};
+    \prbul{O}{21}{21};
+
+
+    \prbul{O}{7}{19};
+    \prbul{O}{8}{20};
+
+    \prbul{O}{19}{7};
+    \prbul{O}{20}{8};
+
+    \prbul{O}{11}{19};
+    \prbul{O}{12}{20};
+
+    \prbul{O}{19}{11};
+    \prbul{O}{20}{12};
+
+  
+    \end{tikzpicture}
+
+\caption{This figure illustrates, on the first part, a graph in which we search for a maximum clique and, on the second part, the matrix obtained built with the reduction.}
+\label{fig:reduction:example}
+\end{figure}
