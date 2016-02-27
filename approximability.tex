@@ -1,4 +1,5 @@
 \section{Approximability}
+\label{sect:approx}
 
 In this section we define the notion of maximal feasible solution and prove that every algorithm returning a maximal feasible solution is a $\sqrt{n}$ approximation.
 
@@ -6,37 +7,42 @@ In this section we define the notion of maximal feasible solution and prove that
 We say a feasible solution is \emph{maximal} if it is not strictly included in another feasible solution. In oher words, when all the lines and columns of that solution are contracted, it is not possible to contract any other line or column.
 \end{definition}
 
-\begin{theorem}
-\label{theo:bounds}
-Let $M$ be an instance of MMC, $(I,J)$ a maximal feasible solution and $M' = C(M,I,J)$ then $2 \sqrt{n} \leq d(M') \leq 4n$.
-\end{theorem}
+\begin{lemma}
+\label{lem:bounds}
+Let $M$ be an instance of MMC, $(I,J)$ be a maximal feasible solution and $M' = C(M,I,J)$ then $2 \sqrt{n} \leq d(M') \leq 4n$.
+\end{lemma}
 \begin{proof}
 A 1 in a matrix cannot have more than $8$ neighbors, thus the density of $M'$ is no more than $4n$.
 
-Let $2$ lines $i$ and $i+1$ of $M'$, there is a column $j$ such that $M'_{i,j} = M'_{i+1,j} = 1$ otherwise we could contract line $i$ and $(I,J)$ would not be maximal. Similarly for each column $j$. Thus $d(M') \geq p'+q'$ where $p'$ and $q'$ are respectively the number of lines and columns of $M'$.
+For each two lines $i$ and $i+1$ of $M'$, there is a column $j$ such that $M'_{i,j} = M'_{i+1,j} = 1$ otherwise we could contract line $i$ and $(I,J)$ would not be maximal. Similarly for each column $j$. Thus $d(M') \geq p'+q'$ where $p'$ and $q'$ are respectively the number of lines and columns of $M'$.
 
 \begin{align*}
-\intertext{As $M'$ contains $n$ 1's,}
-&& p'\cdot q' &\geq n\\
-\intertext{We now show that $p'+q' \geq 2 \sqrt{n}$ by contradiction. We assume that}
-&& p' + q' &< 2 \sqrt{n}\\
-&\Rightarrow& p' \cdot q' &< 2\sqrt{n}p - p^2\\
-\intertext{As the function $2\sqrt{n} x - x^2$ is decreasing if and only if $x \geq \sqrt{n}$ and then, the maximum is reached when $x = \sqrt{n}$}
-&\Rightarrow& p' \cdot q' &< 2 \sqrt{n}^2 - \sqrt{n}^2 = n \\
-\intertext{This is a contradiction as $p' \cdot q' \geq n$, thus}
-&& d(M') &\geq p' + q' \geq 2 \sqrt{n}
+\intertext{From the inequality of arithmetic and geometric means}
+p' + q ' &\geq 2 \sqrt{p'\cdot q'}
+\intertext{As $M'$ contains $n$ 1's, $p'\cdot q' \geq n$}
+p' + q ' &\geq 2 \sqrt{n}
 \end{align*}
-
 \end{proof}
 
+From the upper bound and the lower bound given in the previous lemma, we can immediately prove the following theorem. 
 
-\begin{corol}
+\begin{theorem}
+	\label{theo:sqrtnapprox}
 An algorithm returning any maximal solution of an instance of MMC is a $2\sqrt{n}$-approximation.
-\end{corol}
+\end{theorem}
 
-\begin{remark}
-\label{rmk:badinstance}
-There are instances such that the ratio between an optimal density and the density of the worst maximal solution is $\sqrt{n}$. An example is given in Figure~\ref{fig:badinstance}.
+\begin{comment}
+On doit pouvoir prouver que la borne inf se rapproche de $4\sqrt(n)$ quand p et q augmentent. Pour être exact, il faut montrer que, dans une grille de taille $p \times q$, alors $pq \geq 4n  - 2p -2q+3$. Posons $p = cq$, on a un polynome en p à résoudre et on obtient $pq$ est supérieur à qqch de l'ordre de $4n$ quand p et q tendente vers l'infini.
+
+Ainsi, le rapport d'inapproximabilité se rapprocherait de $\sqrt{n}$. La phrase suivante et la denière phrase de la section 3 aurait ainsi plus de sens.
+\end{comment}
+
+Theorem~\ref{theo:sqrtnapprox} proves a default ratio for every algorithm trying to solve the problem. Note that there are instances in which the ratio between an optimal density and the lowest density of a maximal solution is $\sqrt{n}$. An example is given in Figure~\ref{fig:badinstance}. In Section~\ref{sect:heuristics}, we describe three natural heuristics to solve the problem. For two of them returns, the instance of Figure~\ref{fig:badinstance} may be adapted to show their approximability ratio is $\sqrt{n}$. 
 
 \input{approx_bad_instance}
-\end{remark}
+
+
+
+Determining if MMC can be approximated to within a constant factor is an open question. As it was already pointed at the end of section~\ref{sect:complexity}, the problem may possibly be not approximable to within $n^{\frac{1}{2}-\varepsilon}$ and this would tight the approximability of MMC.
+
+\todo{Transition vers la section suivante}
