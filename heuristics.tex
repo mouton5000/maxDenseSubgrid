@@ -2,21 +2,13 @@
 \section{Heuristics}
 \label{sect:heuristics}
 
-\begin{comment}
-\begin{itemize}
-\item Avant toute chose tester Greedy VS LCL VS Neighborization sur des grosses instances (jusqu'à combien va le LCL?).
-\item Présenter ceux qui marchent et ceux qui marchent pas
-\item Contreexemple? Explication rapide du pire cas?
-\end{itemize}
-\end{comment}
-
 In this section, we describe four natural heuristics for MMC : two first-come-first-served algorithm and two greedy algorithms.
 
 \subsection{The LCL heuristic}
 
 This algorithm is a first-come-first-served algorithm. It is divided into two parts: the Line-Column (LC) part and the Column-Line (CL) part. 
 
-The LC part computes and returns a maximal feasible solution $M^{LC}$ by, firstly, contracting a maximal set of lines $I^{LC}$ and, then, by contracting a maximal set of columns $J^{LC}$. The algorithm builds $I^{LC}$ as follows: it checks for each line from $p-2$ down to 0 if the contraction of that line is legal. In that case, the contraction is done and the algorithm goes on. $J^{LC}$ is built the same way.
+The LC part computes and returns a maximal feasible solution $M^{LC}$ by, firstly, contracting a maximal set of lines $I^{LC}$ and, then, by contracting a maximal set of columns $J^{LC}$. The algorithm builds $I^{LC}$ as follows: it checks for each line from $p-1$ down to $1$ if the contraction of that line is legal. In that case, the contraction is done and the algorithm goes on. $J^{LC}$ is built the same way.
 
 The CL part computes and returns a maximal feasible solution $M^{CL}$ by starting with the columns and ending with the lines. The LCL algorithm then returns the solution with the maximum density.
 
@@ -26,7 +18,7 @@ The advantage of such an algorithm is its time complexity due to its simplicity.
 	The time complexity of the LCL algorithm is $O(p \cdot q)$. 
 \end{theorem}
 \begin{proof}
-	The four sets $I^{LC}$, $J^{LC}$, $I^{CL}$ and $J^{CL}$ can be implemented in time $O(p \cdot q)$ using an auxiliary matrix $M'$. The proof is given for the first one, the implementation of the three other ones is similar. At first, we copy $M$ into $M'$. For each line $i$ from $p-2$ to $0$ of $M'$, we check with $2q$ comparison if there is a column $j$ such that $M'_{i,j} = M'_{i+1,j} = 1$. In that case, we do nothing. Otherwise, we add $i$ to $I^{LC}$, we sum the $i$-th and the $i+1$-th lines and we replace line $i$ with the result.
+	The four sets $I^{LC}$, $J^{LC}$, $I^{CL}$ and $J^{CL}$ can be implemented in time $O(p \cdot q)$ using an auxiliary matrix $M'$. The proof is given for the first one, the implementation of the three other ones is similar. At first, we copy $M$ into $M'$. For each line $i$ from $p-1$ to $1$ of $M'$, we check with $2q$ comparison if there is a column $j$ such that $M'_{i,j} = M'_{i+1,j} = 1$. In that case, we do nothing. Otherwise, we add $i$ to $I^{LC}$, we sum the $i$-th and the $i+1$-th lines and we replace line $i$ with the result.
 	
 	Finally, given a matrix $M$ and a set of lines $I$, one can compute $C(M,I,\emptyset)$ in time $O(p \cdot q)$ by, firstly, computing in time $O(p)$ an array $A$ of size $p$ such that $A_i$ is the number of lines in $I$ strictly lower than $i$ and, secondly, returning a matrix $C$ of size $p - |I| \times q$ such that $C_{i-A_i,j} = M{i,j}$.
 \end{proof}
@@ -71,11 +63,12 @@ The algorithm computes $N(C(M,\{i\},\emptyset))$ and $N(C(M,\emptyset, \{j\}))$ 
 \begin{proof}
 	Let $M$ be a binary matrix, we first determine the time complexity we need to compute $N(M)$. Let $((i,j),(i',j'))$ be two coordinates such that $M_{i,j} = M_{i',j'} = 1$. We assume $i < i'$ and $j < j'$. The two entries may be moved next to each other if $i'- i -1$ of the $i'-i$ lines and $j'- j -1$ of the $j'-j$ columns between the two entries may be contracted and this can be done in time $O(p \cdot q \cdot (j'-j) \cdot (i'-i)) = O(p^2 \cdot q^2)$. As there are at most $n^2$ entries satisfying $M_{i,j} = M_{i',j'} = 1$, we need $O(n^2 \cdot p^2 \cdot q^2)$ operations to compute $N(M)$.  
 	
-	As there are at most $p \cdot q$ iterations. At each iteration, we computes one value per line $i$ and one value per column $j$ in time $O(n^2 \cdot p^2 \cdot q^2)$. The time complety is then $O(n^2 \cdot p^3 \cdot q^3 \cdot (p+q))$.
+	As there are at most $p \cdot q$ iterations. At each iteration, we computes one value per line $i$ and one value per column $j$ in time $O(n^2 \cdot p^2 \cdot q^2)$. The time complexity is then $O(n^2 \cdot p^3 \cdot q^3 \cdot (p+q))$.
 \end{proof}
-
-
 
 \subsection{Numerical results}
 
-\todo{Tester, mettre sous forme de tableau, commenter.}
+In this last subsection, we implemented the three algorithms in order to evaluate their performances.
+
+The tests were done on an Intel(R) Core(TM) i7-4810MQ CPU @ 2.80GHz processor with 8Go of RAM. The implementations were done using Java 8 and can be found at \url{https://github.com/mouton5000/MMCCode}.
+
