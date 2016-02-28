@@ -68,7 +68,129 @@ The algorithm computes $N(C(M,\{i\},\emptyset))$ and $N(C(M,\emptyset, \{j\}))$ 
 
 \subsection{Numerical results}
 
-In this last subsection, we implemented the three algorithms in order to evaluate their performances.
+In this last subsection, we give numerical results of the three algorithms in order to evaluate their performances.
 
-The tests were done on an Intel(R) Core(TM) i7-4810MQ CPU @ 2.80GHz processor with 8Go of RAM. The implementations were done using Java 8 and can be found at \url{https://github.com/mouton5000/MMCCode}.
+The tests are done on an Intel(R) Core(TM) i7-4810MQ CPU @ 2.80GHz processor with 8Go of RAM. The implementations are done using Java 8 and can be found at \url{https://github.com/mouton5000/MMCCode}. The algorithms are run on random squared matrices. Given a size $p$ and a probability $r$, we produce a random binary matrix $M$ of size $p \times p$ such that $Pr(M_{i,j} = 1) = r$. The expected value of $n$ is then $r \cdot p^2$. Before executing each algorithm, we first reduce the size of each instance by removing every column and every line with no 1.
 
+We first test the three algorithm on small instances on which we can compute an exact brute-force algorithm. This algorithm exhaustively enumerates every subset of lines and columns that can be legally contracted and returns the solution with maximum density. The results are summarized on Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToExact} and  Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToEachOther}.
+
+\begin{table}[ht!]
+	\centering
+	\def\arraystretch{1.2}
+	\setlength\tabcolsep{0.075cm}
+	\begin{tabular}{| c | c | c | c | c | c | c | c | c |  c | c | c | }
+		\hline
+		& & Exact & \multicolumn{3}{c|}{LCL} & \multicolumn{3}{c|}{Greedy} & \multicolumn{3}{c|}{Neigh.} \\
+		\hline
+		$p$ & $r$ & time (ms) & time (ms) & $\frac{d^*}{d}$ & $d = d^*$ & time (ms) &  $\frac{d^*}{d}$ & $d = d^*$ & time (ms) &  $\frac{d^*}{d}$ & $d = d^*$ \\
+		\hline
+		\multirow{8}{*}{5} & 0.01 & & & & & & & & & & \\
+		\cline{2-12}
+		 & 0.02 & & & & & & & & & & \\
+		\cline{2-12}
+		 & 0.03 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.04 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.05 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.1 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.2 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.3 & & & & & & & & & & \\
+		\hline
+		\multirow{8}{*}{10} & 0.01 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.02 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.03 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.04 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.05 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.1 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.2 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.3 & & & & & & & & & & \\
+		\hline
+		\multirow{8}{*}{15} & 0.01 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.02 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.03 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.04 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.05 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.1 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.2 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.3 & & & & & & & & & & \\
+		\hline
+		\multirow{8}{*}{20} & 0.01 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.02 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.03 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.04 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.05 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.1 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.2 & & & & & & & & & & \\
+		\cline{2-12}
+		& 0.3 & & & & & & & & & & \\
+		\hline
+	\end{tabular}
+	\caption{This table details the results for each algorithm. For each values of $p$ and $r$, the algorithms are executed on 50 instances. We give for each heuristic the mean running time in milliseconds, the mean ratio between the optimal density and returned density and the number of instances for which the ratio is 1.}
+	\label{tab:heuristices:numericalresults:smallinstances:compareToExact}
+\end{table}
+	
+	\begin{table}[ht!]
+		\centering
+		\def\arraystretch{1.2}
+		\setlength\tabcolsep{0.075cm}
+	\begin{tabular}{| c | c | c | c | }
+	\hline
+	& LCL & Greedy & Neigh. \\
+	\hline
+	LCL & - & & \\
+	\hline
+	Greedy & & - & \\
+	\hline
+	Neigh. & & & - \\
+	\hline
+\end{tabular}
+	\caption{Each entry of this table details, for each couple of heuristics, the number of instances of Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToExact} (there are 1600 instances) for which the line heuristic gives a strictly better results than the column heuristic. }
+	\label{tab:heuristices:numericalresults:smallinstances:compareToEachOther}
+\end{table}
+
+\todo{Commenter les tests}
+
+We then test the two fastest algorithms LCL and Greedy on bigger instances on which the exact algorithm and the neighborization algorithm were not able to return a solution in less than \begin{comment}1 minute\end{comment}. The results are given on Table~\ref{tab:heuristices:numericalresults:biginstances}.
+
+\todo{Vérifier en combien de temps répond neighborization sur des instances 100 x 100.}
+
+\begin{table}[ht!]
+	\centering
+	\def\arraystretch{1.2}
+	\setlength\tabcolsep{0.075cm}
+	\begin{tabular}{| c | c | c | c | c | c | c | c | c |  c | c | c | }
+		\hline
+		& & Exact & \multicolumn{3}{c|}{LCL} & \multicolumn{3}{c|}{Greedy} & \multicolumn{3}{c|}{Neigh.} \\
+		\hline
+		$p$ & $r$ & time (ms) & $\frac{d^*}{d}$ & time (ms) & $d = d^*$ &  $\frac{d^*}{d}$ & time (ms) & $d = d^*$ &  $\frac{d^*}{d}$ & time (ms) & $d = d^*$ \\
+		\hline
+	\end{tabular}
+	\caption{}
+	\label{tab:heuristices:numericalresults:biginstances}
+\end{table}
+
+\todo{Commenter les tests}
