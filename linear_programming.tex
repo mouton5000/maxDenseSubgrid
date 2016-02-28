@@ -1,5 +1,16 @@
 
-\section{Linear programming}
+\section{Linear programming}\label{sec:linearprog}
+
+For $i \in \llbracket 1; p-1 \rrbracket$ (resp.  $j \in \llbracket 1; q-1 \rrbracket$ ), let $x_i$ (resp> $y_j$) be the binary variable such that $x_i=1$ (resp. $y_j=1$) if and only if line $i$ is contracted, i.e. $i \in I$ (resp. column $j$ is contracted, i.e. $j \in J$). From the definition of \ref{problem1}, we can model the MMC problem by the following non-linear binary program:
+
+\begin{equation*}
+(\ast)\left\{
+\begin{array}{lll}
+\max\limits_{x,y} & \quad	d(A)  \\
+& A= \prod\limits_{i=0}^{p-1}
+\end{array}\right.
+\end{equation*}
+where we recall that $$= \frac{1}{2} \cdot \sum\limits_{i,j} \left( M_{i,j} \cdot \left(\sum\limits_{\delta = -1}^1 \sum\limits_{\gamma = -1}^1  M_{i+\delta,j+\gamma}\right) - 1 \right)$$
 
 \begin{comment}
 \begin{itemize}

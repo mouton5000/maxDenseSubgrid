@@ -1,9 +1,13 @@
-\section{Problem definition}
+\section{Problem definition}\label{sec:problemdef}
+
+\begin{comment}
+J'ai change la numerotation des indices, perso je trouve cela etrange qu'une matrice A et un element A(0,0) mais si tu n'aimes pas on en reparles lundi !
+\end{comment}
 
 The following definitions formalize the problem we want to solve with binary matrices. A binary matrix is a matrix with entries from $\{0,1\}$. Such a matrix modelizes a grid in which each dot is a 1 in the matrix.
 
 \begin{definition}
-Let $M$ be a binary matrix with $p$ lines and $q$ columns. For each $i \in \llbracket 0; p-2 \rrbracket$ and each $j \in \llbracket 0; q-2 \rrbracket$, we define the \emph{line contraction matrix} $L_i$ and the \emph{column contraction matrix} $C_j$ by 
+Let $M$ be a binary matrix with $p$ lines and $q$ columns. For each $I \in \llbracket 1; p-1 \rrbracket$ and each $j \in \llbracket 1; q-1 \rrbracket$, we define the \emph{line contraction matrix} $L_i$ and the \emph{column contraction matrix} $C_j$ by 
 
 $$L_i = \hspace{0.2cm}\begin{blockarray}{ccccccccccccc}
 & & & & & & & & & & &\\
@@ -40,7 +44,7 @@ $$
 \end{definition}
 
 \begin{definition}
-Let $M$ be a binary matrix of size $p \times q$, $I = \{i_1, i_2, \dots, i_{|I|}\}$ a sublist of $\llbracket 0;p-1 \rrbracket$ and $J = \{j_1, j_2, \dots, j_{|I|}\}$ a sublist of $\llbracket 0;q-1 \rrbracket$. We assume $I$ and $J$ are sorted. We define the \emph{contraction $C(M,I,J)$ of the lines $I$ and the columns $J$ of $M$} by the following matrix
+Let $M$ be a binary matrix of size $p \times q$, $I = \{i_1, i_2, \dots, i_{|I|}\}$ a sublist of $\llbracket 1;p-1 \rrbracket$ and $J = \{j_1, j_2, \dots, j_{|I|}\}$ a sublist of $\llbracket 1;q-1 \rrbracket$. We assume $I$ and $J$ are sorted. We define the \emph{contraction $C(M,I,J)$ of the lines $I$ and the columns $J$ of $M$} by the following matrix
 $$
 C(M,I,J) = \left(\prod\limits_{k = 1}^{|I|} L_{i_k}\right) \cdot M \cdot \left(\prod\limits_{k = |J|}^{1} C_{j_k}\right)
 $$
@@ -57,10 +61,11 @@ For example, the contraction of the $j$-th column of a matrix such that $M_{i,j}
 	$$ 
 	d(M) = \frac{1}{2} \cdot \sum\limits_{i,j} \left( M_{i,j} \cdot \left(\sum\limits_{\delta = -1}^1 \sum\limits_{\gamma = -1}^1  M_{i+\delta,j+\gamma}\right) - 1 \right)
 	$$
+	where we define that $M_{i,j}=0$ if $(i,j) \notin \llbracket 1;p-1 \rrbracket \times \llbracket 1;q-1 \rrbracket$
 \end{definition}
 
-\begin{problem}
-	\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ such that $n$ entries equal 1 and $p \cdot q - n$ entries equal 0, the Maximum Matrix Contraction problem consists in the search for two sublists $I$ of $\llbracket 0;p-1 \rrbracket$ and $J$ of $\llbracket 0;q-1 \rrbracket$ such that the contraction $C(M,I,J)$ is legal and maximize $d(C(M,I,J))$.
+\begin{problem}\label{problem1}
+	\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ such that $n$ entries equal 1 and $p \cdot q - n$ entries equal 0, the Maximum Matrix Contraction problem consists in the search for two sublists $I$ of $\llbracket 1;p-1 \rrbracket$ and $J$ of $\llbracket 1;q-1 \rrbracket$ such that the contraction $C(M,I,J)$ is legal and maximize $d(C(M,I,J))$.
 \end{problem}
 
 \begin{comment}
