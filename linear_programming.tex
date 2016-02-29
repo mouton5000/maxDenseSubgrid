@@ -1,7 +1,8 @@
 
-\section{Linear programming}\label{sec:linearprog}
+\section{Linear programming}
+\label{sec:linearprog}
 
-For $i \in \llbracket 1; p-1 \rrbracket$ (resp.  $j \in \llbracket 1; q-1 \rrbracket$ ), let $x_i$ (resp> $y_j$) be the binary variable such that $x_i=1$ (resp. $y_j=1$) if and only if line $i$ is contracted, i.e. $i \in I$ (resp. column $j$ is contracted, i.e. $j \in J$). From the definition of \ref{problem1}, we can model the MMC problem by the following non-linear binary program:
+For $i \in \llbracket 1; p-1 \rrbracket$ (resp.  $j \in \llbracket 1; q-1 \rrbracket$ ), let $x_i$ (resp. $y_j$) be the binary variable such that $x_i=1$ (resp. $y_j=1$) if and only if line $i$ is contracted, i.e. $i \in I$ (resp. column $j$ is contracted, i.e. $j \in J$). From the definitions of Section~\ref{sec:problemdef}, we can model the MMC problem by the following non-linear binary program:
 
 \begin{equation*}
 (\ast)\left\{
@@ -14,26 +15,26 @@ For $i \in \llbracket 1; p-1 \rrbracket$ (resp.  $j \in \llbracket 1; q-1 \rrbra
 \end{equation*}
 where $I_p,I_q$ denotes the identity matrix and where we recall that $$d(A)= \frac{1}{2} \cdot \sum\limits_{i,j} \left( A_{i,j} \cdot \left(\sum\limits_{\delta = -1}^1 \sum\limits_{\gamma = -1}^1  A_{i+\delta,j+\gamma}\right) - 1 \right)$$
 
-\noindent Although this formulation is very convenient to write the mathematical model, it is intractable as we would need to add an exponential number of linearization: for all subset $ I,J \subseteq \llbracket 1; p-1 \rrbracket \times \llbracket 1; q-1 \rrbracket$ we would need a variable $x_I=\prod\limits_{i \in I}x_i $ and $y_I=\prod\limits_{j \in J}y_j $.\\
+\noindent Although this formulation is very convenient to write the mathematical model, it is intractable as we would need to add an exponential number of linearizations: for all subset $ I,J \subseteq \llbracket 1; p-1 \rrbracket \times \llbracket 1; q-1 \rrbracket$ we would need a variable $x_I=\prod\limits_{i \in I}x_i $ and $y_I=\prod\limits_{j \in J}y_j $.\\
 
 \noindent We now present a linear model for the MMC problem: instead of linearizing the products $\prod\limits_{i \in I}x_i$ and $\prod\limits_{j \in J}y_j$, we cut the product \\
-$A= \prod\limits_{i=1}^{p-1}((L_i-I_p)x_i+I_p)M\prod\limits_{j=q-1}^{1}((C_j-I_q)y_j+I_q) $ in $T=p+q-1$ time-steps. More precisely, define $A^1=M$; for all $t=2,...,p$ we define by $A^t$ the matrix which is computed after deciding the value of $y_j$ for $j \ge p-t+1$; similarly, for all $p+1\le t \le T$ $A^t$ is determined by the value of $y_j$ for all $j$ and by the value of $x_i$ for $i \ge q -t+p $. We obtain the fellowing program:
+$A= \prod\limits_{i=1}^{p-1}((L_i-I_p)x_i+I_p)M\prod\limits_{j=q-1}^{1}((C_j-I_q)y_j+I_q) $ in $T=p+q-1$ time-steps. More precisely, define $A^{(1)}=M$; for all $t=2,...,p$, we define by $A^{(t)}$ the matrix which is computed after deciding the value of $y_j$ for $j \ge p-t+1$; similarly, for all $p+1\le t \le T$, $A^{(t)}$ is determined by the value of $y_j$ for all $j$ and by the value of $x_i$ for $i \ge q -t+p $. We obtain the following program:
 
 \begin{equation*}
 (P)\left\{
 \begin{array}{lll}
 \max\limits_{x,y}  \quad	& d(A^T)  \\
-& A^{t+1}= ((L_{p-t}-I_p)x_{p-t}+I_p)A^t \qquad & \forall 1\le t\le p-1\\
-& A^{t+1}= A^t((C_{q-t+p}-I_q)y_{q-t+p}+I_q) \qquad & \forall p+1\le t\le T\\
-& A^t_{i,j} \le 1, \quad \forall (i,j,t) \in \llbracket 1; p-1 \rrbracket \times \llbracket 1; q-1 \rrbracket \times \llbracket 2; T \rrbracket \\
+& A^{(t+1)}= ((L_{p-t}-I_p)x_{p-t}+I_p)A^{(t)} \qquad & \forall 1\le t\le p-1\\
+& A^{(t+1)}= A^{(t)}((C_{q-t+p}-I_q)y_{q-t+p}+I_q) \qquad & \forall p\leq t\le T\\
+& A^{(t)}_{i,j} \le 1, \quad \forall (i,j,t) \in \llbracket 1; p-1 \rrbracket \times \llbracket 1; q-1 \rrbracket \times \llbracket 2; T \rrbracket \\
 & x_i,y_j \in \{0,1\}
 \end{array}\right.
 \end{equation*}
 
-\noindent We can easily linearize the model above by introducing, for all $(i,j,t) \in \llbracket 1; p-1 \rrbracket \times \llbracket 1; q-1 \rrbracket \times \llbracket 2; T \rrbracket $ $r_{i,j,t}=A^t_{i,j}*x_{p-t}$ if $1\le t\le p-1$ and $r_{i,j,t}=A^t_{i,j}*y_{q-t+p}$ if $p+1\le t\le T$, noticing that the variables $A^t_{i,j},x_t,y_t$ are all binary. Finally, after linearizing the product $A^T_{i,j}A^T_{k,l}$ in the objective function, $d(A^T)$, we obtain a tractable linear formulation of the MMC problem.
+\noindent We can easily linearize the model above by introducing, for all $(i,j,t) \in \llbracket 1; p-1 \rrbracket \times \llbracket 1; q-1 \rrbracket \times \llbracket 2; T \rrbracket $ $r_{i,j,t}=A^{(t)}_{i,j}*x_{p-t}$ if $1\le t\le p-1$ and $r_{i,j,t}=A^{(t)}_{i,j}*y_{q-t+p}$ if $p+1\le t\le T$, noticing that the variables $A^{(t)}_{i,j},x_t,y_t$ are all binary. Finally, after linearizing the product $A^{(T)}_{i,j}A^{(T)}_{k,l}$ in the objective function, $d(A^{(T)})$, we obtain a tractable linear formulation of the MMC problem.
 
 
 
 \subsection{Numerical results}
 
-We tested the proposed model  using IBM ILOG CPLEX 12.6. The experiments were performed on an Intel i7 CPU at 2.70GHz with 16.0 GB RAM. The models were implemented in Julia using JuMP \cite{jump} . The algorithm is run on random squared matrices. Given a size $p$ and a probability $r$, we produce a random binary matrix $M$ of size $p \times p$ such that $Pr(M_{i,j} = 1) = r$. The expected value of $n$ is then $r \cdot p^2$. We tested the model for $n \in \{6,9,12,15\}$ for a probability $r \in \{0.1,0.15,0.2,0.25,0.3\}$. For each value of $p$ and $r$, 10 random instances were created, whose average is reported on table ...
+We test the proposed model using IBM ILOG CPLEX 12.6. The experiments are performed on an Intel i7 CPU at 2.70GHz with 16.0 GB RAM. The models are implemented in Julia using JuMP \cite{jump} . The algorithm is run on random squared matrices. Given a size $p$ and a probability $r$, we produce a random binary matrix $M$ of size $p \times p$ such that $Pr(M_{i,j} = 1) = r$. The expected value of $n$ is then $r \cdot p^2$. We test the model for $n \in \{6,9,12,15\}$ for a probability $r \in \{0.1,0.15,0.2,0.25,0.3\}$. For each value of $p$ and $r$, 10 random instances are created, whose average is reported on table ...

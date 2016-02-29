@@ -1,4 +1,5 @@
-\section{Problem definition}\label{sec:problemdef}
+\section{Problem definition}
+\label{sec:problemdef}
 
 The following definitions formalize the problem we want to solve with binary matrices. A binary matrix is a matrix with entries from $\{0,1\}$. Such a matrix modelizes a grid in which each dot is a 1 in the matrix.
 
@@ -63,10 +64,6 @@ For example, the contraction of the $j$-th column of a matrix such that $M_{i,j}
 \begin{problem}\label{problem1}
 	\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ such that $n$ entries equal 1 and $p \cdot q - n$ entries equal 0, the Maximum Matrix Contraction problem consists in the search for two sublists $I$ of $\llbracket 1;p-1 \rrbracket$ and $J$ of $\llbracket 1;q-1 \rrbracket$ such that the contraction $C(M,I,J)$ is legal and maximize $d(C(M,I,J))$.
 \end{problem}
-
-\begin{comment}
-Doit-on parler du programme mathématique trivial ici?
-\end{comment}
 
 \todo{Petite transition?}
 
