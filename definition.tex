@@ -5,8 +5,8 @@ The following definitions formalize the problem we want to solve with binary mat
 
 \begin{definition}
 Let $M$ be a binary matrix with $p$ lines and $q$ columns. For each $I \in \llbracket 1; p-1 \rrbracket$ and each $j \in \llbracket 1; q-1 \rrbracket$, we define the \emph{line contraction matrix} $L_i$ and the \emph{column contraction matrix} $C_j$ by 
-
-$$L_i = \hspace{0.2cm}\begin{blockarray}{ccccccccccccc}
+\begin{center}
+\scalebox{0.7}{\mbox{$L_i = \hspace{0.2cm}\begin{blockarray}{ccccccccccccc}
 & & & & & & & & & & &\\
 \begin{block}{(cccccccccc)ccc}
 1      &  0     & \cdots & 0      & 0 & 0 &  0  & 0 & \cdots & 0 &&&\\
@@ -37,7 +37,8 @@ C_j = \hspace{0.2cm}\begin{blockarray}{ccccccccccc}
 0      &   0    &\cdots  & 0      & 0 & 0      &   0    &\cdots  & 1      & 0 &\\
 \end{block}
 \end{blockarray}
-$$
+$}}
+\end{center}
 \end{definition}
 
 \begin{definition}
@@ -48,12 +49,13 @@ $$
 \end{definition}
 
 \begin{definition}
-	A contraction $C(M,I,J)$ is said \emph{legal} if and only if $C(M,I,J)$ is a binary matrix.
+	A contraction $C(M,I,J)$ is said \emph{valid} if and only if $C(M,I,J)$ is a binary matrix.
 \end{definition}
 
-For example, the contraction of the $j$-th column of a matrix such that $M_{i,j} = M_{i,j+1} = 1$ is not legal because it contains a $2$ at line $i$ and column $j$.
+For example, the contraction of the $j$-th column of a matrix such that $M_{i,j} = M_{i,j+1} = 1$ is not valid because it contains a $2$ at line $i$ and column $j$.
 
 \begin{definition}
+	\label{def:density}
 	Let $M$ be a binary matrix of size $p \times q$. The \emph{density} is the number of neighbor pairs of 1 in the matrix (including the diagonal pairs). This value may be computed with the following formula :
 	$$ 
 	d(M) = \frac{1}{2} \cdot \sum\limits_{i,j} \left( M_{i,j} \cdot \left(\sum\limits_{\delta = -1}^1 \sum\limits_{\gamma = -1}^1  M_{i+\delta,j+\gamma}\right) - 1 \right)
@@ -62,7 +64,7 @@ For example, the contraction of the $j$-th column of a matrix such that $M_{i,j}
 \end{definition}
 
 \begin{problem}\label{problem1}
-	\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ such that $n$ entries equal 1 and $p \cdot q - n$ entries equal 0, the Maximum Matrix Contraction problem consists in the search for two sublists $I$ of $\llbracket 1;p-1 \rrbracket$ and $J$ of $\llbracket 1;q-1 \rrbracket$ such that the contraction $C(M,I,J)$ is legal and maximize $d(C(M,I,J))$.
+	\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ such that $n$ entries equal 1 and $p \cdot q - n$ entries equal 0, the Maximum Matrix Contraction problem consists in the search for two sublists $I$ of $\llbracket 1;p-1 \rrbracket$ and $J$ of $\llbracket 1;q-1 \rrbracket$ such that the contraction $C(M,I,J)$ is valid and maximize $d(C(M,I,J))$.
 \end{problem}
 
 We study in the next two sections the complexity and the approximability of this problem.

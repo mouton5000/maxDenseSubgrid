@@ -8,34 +8,28 @@ In this section, we describe three heuristics for MMC : two first-come-first-ser
 
 This algorithm is a first-come-first-served algorithm. It is divided into two parts: the Line-Column (LC) part and the Column-Line (CL) part. 
 
-The LC part computes and returns a maximal feasible solution $M^{LC}$ by, firstly, contracting a maximal set of lines $I^{LC}$ and, then, by contracting a maximal set of columns $J^{LC}$. The algorithm builds $I^{LC}$ as follows: it checks for each line from $p-1$ down to $1$ if the contraction of that line is legal. In that case, the contraction is done and the algorithm goes on. $J^{LC}$ is built the same way.
+The LC part computes and returns a maximal feasible solution $M^{LC}$ by, firstly, contracting a maximal set of lines $I^{LC}$ and, then, by contracting a maximal set of columns $J^{LC}$. The algorithm builds $I^{LC}$ as follows: it checks for each line from $p-1$ down to $1$ if the contraction of that line is valid. In that case, the contraction is done and the algorithm goes on. $J^{LC}$ is built the same way.
 
 The CL part computes and returns a maximal feasible solution $M^{CL}$ by starting with the columns and ending with the lines. The LCL algorithm then returns the solution with the maximum density.
 
-The advantage of such an algorithm is its time complexity due to its simplicity.
+The advantage of such an algorithm is its small time complexity.
 
 \begin{theorem}
 	The time complexity of the LCL algorithm is $O(p \cdot q)$. 
 \end{theorem}
 \begin{proof}
-	The four sets $I^{LC}$, $J^{LC}$, $I^{CL}$ and $J^{CL}$ can be implemented in time $O(p \cdot q)$ using an auxiliary matrix $M'$. The proof is given for the first one, the implementation of the three other ones is similar. At first, we copy $M$ into $M'$. For each line $i$ from $p-1$ to $1$ of $M'$, we check with $2q$ comparison if there is a column $j$ such that $M'_{i,j} = M'_{i+1,j} = 1$. In that case, we do nothing. Otherwise, we add $i$ to $I^{LC}$, we sum the $i$-th and the $i+1$-th lines and we replace line $i$ with the result.
+	The four sets $I^{LC}$, $J^{LC}$, $I^{CL}$ and $J^{CL}$ can be implemented in time $O(p \cdot q)$ using an auxiliary matrix $M'$. The proof is given for the first one, the implementation of the three other ones is similar. At first, we copy $M$ into $M'$. For each line $i$ from $p-1$ to $1$ of $M'$, we check with $2q$ comparison if there is a column $j$ such that $M'_{i,j} = M'_{i+1,j} = 1$. In that case, we do nothing. Otherwise, we add $i$ to $I^{LC}$ and we replace line $i$ with the sum of the $i$-th and the $i+1$-th lines.
 	
 	Finally, given a matrix $M$ and a set of lines $I$, one can compute $C(M,I,\emptyset)$ in time $O(p \cdot q)$ by, firstly, computing in time $O(p)$ an array $A$ of size $p$ such that $A_i$ is the number of lines in $I$ strictly lower than $i$ and, secondly, returning a matrix $C$ of size $p - |I| \times q$ such that $C_{i-A_i,j} = M{i,j}$.
 \end{proof}
 
 \begin{remark}
-	Note that, if there is at most one 1 per line of the matrix of the matrix, the LCL algorithm is asymptotically a 4-approximation when $n$ approaches infinity. Indeed, the LC part returns a line matrix in which each entry is a 1. The density of this solution is $n-1$. As the maximum density is $4n$ by Lemma~\ref{lem:bounds}, the ratio is $4\frac{n}{n-1}$. 
+	Note that, if there is at most one 1 per line of the matrix of the matrix, the LCL algorithm is asymptotically a 4-approximation when $n$ approaches infinity. Indeed, the LC part returns a line matrix in which each entry is a 1. The density of this solution is $n-1$. As the maximum density is $4n$ by Lemma~\ref{lem:bounds}, the ratio is $4\frac{n}{n-1}$. On the contrary, the example given in Appendix~\ref{apx:badinstance} can be adapted to prove this algorithm is, in the worst case, at least a $\sqrt{n}$-approximation. 
 \end{remark} 
-
-\begin{remark}
-	On the contrary, if we consider the instances in which there are lines and columns containing two 1, this algorithm is at least $\sqrt{n}$-approximation algorithm. This is due to the incompatibility between lines or columns. For example if $M_{i,j} = M{i+2,j} = 1$, one can contract either line $i$ or line $i+1$ but not the two of them. We can use this property adapt the instance of Figure~\ref{fig:badinstance} in order to lure the algorithm.
-\end{remark}
 
 \subsection{The greedy algorithm}
 
-The greedy algorithm tries to maximize the density at each iteration. 
-
-The algorithm computes $d(C(M,\{i\},\emptyset))$ and $d(C(M,\emptyset, \{j\}))$ for each line $i$ and each column $j$ if the contraction is legal. It then chooses the line or the column maximizing the density. It starts again until the solution is maximal.
+The greedy algorithm tries to maximize the density at each iteration. The algorithm computes $d(C(M,\{i\},\emptyset))$ and $d(C(M,\emptyset, \{j\}))$ for each line $i$ and each column $j$ if the contraction is valid. It then chooses the line or the column maximizing the density. It starts again until the solution is maximal.
 
 \begin{theorem}
 	The time complexity of the Greedy algorithm is $O(p^2 \cdot q^2)$. 
@@ -45,17 +39,15 @@ The algorithm computes $d(C(M,\{i\},\emptyset))$ and $d(C(M,\emptyset, \{j\}))$ 
 \end{proof}
 
 \begin{remark}
-	As for the LCL algorithm, this algorithm is also at least a $\sqrt{n}$-approximation algorithm as we can adapt the instance of Figure~\ref{fig:badinstance} in order to lure the greedy algorithm. Indeed, we can force the algorithm to choose a line or a column by making it the sole choice increasing the density.
+	As for the LCL algorithm, we can also adapt the instance of Appendix~\ref{fig:badinstance} in order to lure the greedy algorithm and prove it is at least a $\sqrt{n}$-approximation algorithm.
 \end{remark}
 
 \subsection{The neighborization algorithm}
 
-The neighborization algorithm is a greedy algorithm trying to maximize, at each iteration, the number of couple of entries that can be moved next to each other with a contraction.
+The neighborization algorithm is a greedy algorithm trying to maximize, at each iteration, the number of couple of entries that can be moved next to each other with a contraction. This algorithm is designed to avoid the traps in which the LCL algorithm and the Greedy algorithm fall in by never contracting lines and columns that could prevent some 1 entries to gain a neighbor.
 
 We define a function $N$ from $(\llbracket 0;p-1 \rrbracket \times \llbracket 0;q-1 \rrbracket)^2$ to $\{0,1\}$.
-For each couple $c = ((i,j),(i',j'))$ such that $M_{i,j} = 0$ or $M_{i',j'} = 0$, $N(c) = 0$. Otherwise, $N(c) = 1$ if and only if there is a sublist of lines $I$ and a sublist of columns $J$ such that $C(M,I,J)$ is legal and such that the two entries are moved next to each other with this contraction. Finally, we define $$N(M) = \sum\limits_{i = 1}^p\sum\limits_{j = 1}^q\sum\limits_{i' = 1}^p\sum\limits_{j' = 1}^q N((i,j),(i',j'))$$
-
-The algorithm computes $N(C(M,\{i\},\emptyset))$ and $N(C(M,\emptyset, \{j\}))$ for each line $i$ and each column $j$ if the contraction is legal. It then chooses the line or the column maximizing the result. It starts again until the solution is maximal.
+For each couple $c = ((i,j),(i',j'))$ such that $M_{i,j} = 0$ or $M_{i',j'} = 0$, $N(c) = 0$. Otherwise, $N(c) = 1$ if and only if there is a sublist of lines $I$ and a sublist of columns $J$ such that $C(M,I,J)$ is valid and such that the two entries are moved next to each other with this contraction. Finally, we define $N(M)$ as the sum of all the values $N((i,j),(i',j'))$. The algorithm computes $N(C(M,\{i\},\emptyset))$ and $N(C(M,\emptyset, \{j\}))$ for each line $i$ and each column $j$ if the contraction is valid. It chooses the line or the column maximizing the result and starts again until the solution is maximal.
 
 \begin{theorem}
 	The time complexity of the Greedy algorithm is $O(n^2 \cdot p^3 \cdot q^3 \cdot (p+q))$. 
@@ -70,16 +62,17 @@ The algorithm computes $N(C(M,\{i\},\emptyset))$ and $N(C(M,\emptyset, \{j\}))$ 
 
 In this last subsection, we give numerical results of the three algorithms in order to evaluate their performances.
 
-The experiments are performed on an Intel(R) Core(TM) i7-4810MQ CPU @ 2.80GHz processor with 8Go of RAM. The algorithms are implemented with Java 8 and can be found at \url{https://github.com/mouton5000/MMCCode}. The algorithms are run on random squared matrices. Given a size $p$ and a probability $r$, we produce a random binary matrix $M$ of size $p \times p$ such that $Pr(M_{i,j} = 1) = r$. The expected value of $n$ is then $r \cdot p^2$. Before executing each algorithm, we first reduce the size of each instance by removing every column and every line with no 1.
+The experiments are performed on an Intel(R) Core(TM) i7-4810MQ CPU @ 2.80GHz processor with 8Go of RAM. The algorithms are implemented with Java 8 and can be found at \url{https://github.com/mouton5000/MMCCode}. The algorithms are run on random squared matrices. Given a size $p$ and a probability $r$, we produce a random binary matrix $M$ of size $p \times p$ such that $Pr(M_{i,j} = 1) = r$. The expected value of $n$ is then $r \cdot p^2$. Before executing each algorithm, we first reduce the size of each instance by removing every column and line with no 1.
 
 \paragraph{Small instances. }
-We first test the three algorithm on small instances on which we can compute an exact brute-force algorithm. This algorithm exhaustively enumerates every subset of lines and columns that can be legally contracted and returns the solution with maximum density. The results are summarized on Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToExact} and  Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToEachOther}.
+We first test the three algorithm on small instances on which we can compute an exact brute-force algorithm. This algorithm exhaustively enumerates every subset of lines and columns for which the contraction is valid and returns the solution with maximum density. The results are summarized on Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToExact} and  Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToEachOther}.
 
 
 \begin{table}[ht!]
 	\centering
 	\def\arraystretch{1.2}
 	\setlength\tabcolsep{0.075cm}
+	\scriptsize
 	\input{small_instances_exact_compare}
 	\caption{This table details the results for each algorithm. For each values of $p$ and $r$, the algorithms are executed on 50 instances. We give for each heuristic the mean running time in milliseconds, the mean ratio between the optimal density and returned density and the number of instances for which the ratio is 1.}
 	\label{tab:heuristices:numericalresults:smallinstances:compareToExact}
@@ -89,19 +82,16 @@ We first test the three algorithm on small instances on which we can compute an 
 	\centering
 	\def\arraystretch{1.2}
 	\setlength\tabcolsep{0.075cm}
+	\scriptsize
 	\input{small_instances_each_other_compare}
 	\caption{Each entry of this table details, for each couple of heuristics, the number of instances of Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToExact} (there are 1600 instances) for which the line heuristic gives a strictly better results than the column heuristic. }
 	\label{tab:heuristices:numericalresults:smallinstances:compareToEachOther}
 \end{table}
 
-We can observe from Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToExact} that the running time first increases when $r$ grows and then decreases. Similarly, the number of instances for which the heuristics returns an optimal solution first decreases when $r$ grows and then increases. The first behavior is explained by the fact that the size of instances with small values of $n$ can be reduced. On the other hand, if $r$ is high, the number of lines and columns of which the contraction is not valid increases and, then, the search space of the algorithms is shortened.
-
-Considering the running times, as it was predicted by the time complexities, the LCL and the greedy heuristics are the fastest algorithms. We can observe that the neighborization algorithm can be slower than the exact algorithm on small instances because the running time of the former is more influenced by $n$ than the latter. However, we do not exclude the fact the implementation of the neighborization algorithm may be improved.
-
-Considering the quality of the solutions returned by the algorithms, the Greedy and the neighborization heuristics show better performances than the LCL algorithm.
+We can observe from Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToExact} that the running time first increases when $r$ grows and then decreases. Similarly, the number of times the heuristics returns an optimal solution first decreases and then increases. The first behavior is explained by the fact that the size of instances with small values of $n$ can be reduced. On the other hand, if $r$ is high, the number of lines and columns of which the contraction is not valid increases and, then, the search space of the algorithms is shortened. Considering the running times, as it was predicted by the time complexities, the LCL and the greedy heuristics are the fastest algorithms. We can observe that the neighborization algorithm can be slower than the exact algorithm on small instances because the running time of the former is more influenced by $n$ than the latter. However, we do not exclude the fact the implementation of the neighborization algorithm may be improved. Considering the quality of the solutions returned by the algorithms, the Greedy and the neighborization heuristics show better performances than the LCL algorithm.
 
 \paragraph{Big instances. }
-We then test the two fastest algorithms LCL and Greedy on bigger instances on which the exact algorithm and the neighborization algorithm were not able to return a solution in less than 5 minutes. The results are given on Table~\ref{tab:heuristices:numericalresults:biginstances}.
+We then test the two fastest algorithms LCL and Greedy on bigger instances. The results are given on Table~\ref{tab:heuristices:numericalresults:biginstances}.  Four interesting differences with Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToExact} emerges from Table~\ref{tab:heuristices:numericalresults:biginstances}. Firstly, the LCL algorithm is faster than the greedy algorithm. This is coherent with the time complexities. Secondly, the LCL algorithm does not follows the same behavior as the exact algorihtm and the neighborization heuristic for small instances: the running time increases with $r$ even if the search space is shortened. Indeed, contrary to the three other algorithms, the implementation does not depends on this search space. Thirdly, the running time of the greedy algorithm first increases with $r$, then decreases and and finally slowly increases again. This last increase is due to the computation time of the density and the line and columns that can be contracted.  Finally, the solution returned by the LCL algorithm seems to be better for small values of $r$ and, on the other hand, the greedy algorithm returns better densities for middle values. The two algorithm are equivalent for high values of $r$ because those instances can probably not be contracted.
 
 \begin{table}[ht!]
 	\centering
@@ -109,8 +99,6 @@ We then test the two fastest algorithms LCL and Greedy on bigger instances on wh
 	\setlength\tabcolsep{0.05cm}
 	\scriptsize
 	\input{big_instances}
-	\caption{}
+	\caption{This table details the results for the LCL algorithm and the greedy alorithm. For each values of $p$ and $r$, the algorithms are executed on 50 instances. We give for each heuristic the mean running time in milliseconds and how many times the returned density is strictly better than the density returned by the other algorithm.}
 	\label{tab:heuristices:numericalresults:biginstances}
 \end{table}
-
-Four interesting differences with Table~\ref{tab:heuristices:numericalresults:smallinstances:compareToExact} emerges from Table~\ref{tab:heuristices:numericalresults:biginstances}. Firstly, the LCL algorithm is faster than the greedy algorithm. This is coherent with the time complexities. Secondly, the LCL algorithm does not follows the same behavior as the exact algorihtm and the neighborization heuristic for small instances: the running time increases with $r$ even if the search space is shortened. Indeed, contrary to the three other algorithms, the implementation does not depends on this search space. Thirdly, the running time of the greedy algorithm first increases with $r$, then decreases and and finally slowly increases again. This last increase is due to the computation time of the density and the line and columns that can be contracted.  Finally, the solution returned by the LCL algorithm seems to be better for small values of $r$ and, on the other hand, the greedy algorithm returns better densities for middle values. The two algorithm are equivalent for high values of $r$ because those instances can probably not be contracted.

@@ -1,8 +1,10 @@
 \begin{figure}
 \centering
-
+\scalebox{0.6}{
 		\begin{tikzpicture}
-		\tikzset{tinoeud/.style={draw, circle, minimum height=0.1cm}}
+		
+		\clip (-0.25,-5.25) rectangle (3.25,7.25);
+		\tikzset{tinoeud/.style={draw, circle, minimum height=0.5cm}}
 		\node[tinoeud] (U) at (0,0) {};
 		\node[tinoeud] (V) at (2,0) {};
 		\node[tinoeud] (W) at (0,2) {};
@@ -153,8 +155,8 @@
     \prone{O}{20}{12};
 
   
-    \end{tikzpicture}
+    \end{tikzpicture}}
 
-\caption{This figure illustrates, on the first part, a graph in which we search for a maximum clique and, on the second part, the matrix obtained built with the reduction. We do not show the 0 entries of the matrix for readability. }
+\caption{This figure illustrates, on the left, a graph in which we search for a maximum clique and, on the right, the matrix obtained built with the reduction. We do not show the 0 entries of the matrix for readability. Each dotted line and column represent the valid contractions.}
 \label{fig:reduction:example}
 \end{figure}

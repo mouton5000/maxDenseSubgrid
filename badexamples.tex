@@ -1,0 +1,16 @@
+\section{An instance with an $O(\sqrt{n})$ gap between the worst and the best solution.}
+
+\label{apx:badinstance}
+
+
+Theorem~\ref{theo:sqrtnapprox} of Section~\ref{sect:approx} proves a default $2\sqrt{n}$ upper bound of the approximation ratio for every algorithm returning a maximal solution.
+
+We give, in this appendix, in Figure~\ref{fig:badinstance}, an instance in which the ratio between an optimal density and the lowest density of a maximal solution is at least $4\sqrt{n}$.
+
+\input{approx_bad_instance}
+
+We highly believe this instance is the worst case that can happen and that the density of a maximal solution is always higher than $4\sqrt{n}$. The result of Theorem~\ref{theo:sqrtnapprox} may then possibly be updated to the following conjecture. 
+
+\begin{conjecture}
+	An algorithm returning any maximal solution of an instance of MMC is a $\sqrt{n}$-approximation.
+\end{conjecture}
