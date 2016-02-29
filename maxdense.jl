@@ -13,15 +13,21 @@ using CPLEX
 #######################################################################################################################################
 
 
+Valeur = [6 , 9 ,12 , 15]
+density = [0.1 , 0.15 , 0.2 , 0.25 , 0.30]
 
+for m in Valeur
+for p in density
+for e=1:10
+
+
+file=open("Resultats/Res_$(m)_$(p)_$(e)","w")
 
 # number of rows
 
 
-m= int(ARGS[1])
-
 # number of columns
-n= int(ARGS[2])
+n= m
 
 # density distributions
 p=0.1
@@ -35,7 +41,7 @@ for i=1:m
 		end
 	end
 end
-println("matrice G= ",G)
+println(file,"matrice G= ",G)
 
 # We define the first column addition matrix (C_{n-1})
 C=eye(Int64,n)
@@ -141,17 +147,22 @@ end
 
 # On commence par resoudre la relaxation P^0 ou il n'ya aucune contrainte induite par le second niveau
 #print(mod)
-tic()
+start=time()
 status = solve(mod)
-println("valeur_optimale ",getObjectiveValue(mod))
-toc()
+println(file,"valeur_optimale ",getObjectiveValue(mod))
+temps = time()-start
+println(file,"temps ",temps)
 mat=getValue(M)
-for t=1:T
-	println("iteration ",t)
-	println("matrice= ",round(Int64,mat[:,:,t]))
-	println("")
+println(file,"solution ",round(Int64,mat[:,:,T]))
+
+#for t=1:T
+#	println("iteration ",t)
+#	println("matrice= ",round(Int64,mat[:,:,t]))
+#	println("")
+#end
+
 end
-
-
+end
+end
    
 
