@@ -9,8 +9,9 @@ In this paper, we define the following problem. We are given a two dimensional a
 
 \paragraph{Motivations. }
 This problem have an application in optimal sizing of wind-farms \cite{Pillai2015} where we must first define, from a given set of wind-farms location, the neighborhood graph of this set, i.e. the graph such that two wind farms are connected if and only if their corresponding entries in the grid are neighbors. More precisely, given a set of points in the plane, we consider a first grid-embedding such that any two points are at least separated by one vertical line and one horizontal line. Then, we consider the problem of deciding which lines and columns to contract such that the derived embedding maximize the density of the grid, i.e., the number of edges in the corresponding neighbor graph.
-
+\vspace{-0.2cm}
 \paragraph{Contributions. } In this paper, we formally define the grid contraction problem as a binary matrix contraction problem in which every dot is a 1 and every other entry is 0. We study the complexity and the polynomial approximability of the problem. Especially, we prove this problem to be NP-Complete. Nonetheless, every algorithm solving this problem is at most an $\sqrt{n}$-approximation algorithm. We then focus on efficients algorithm to solve the problem. We first investigate the mathematical programming formulation of this problem. We give two formulations: a straightforward non-linear program and a linear program.
 Secondly, we describe three polynomial heuristics to solve the problem. We finally give numerical tests to compare the performances of the linear program and each algorithm. 
 
 In Section~\ref{sec:problemdef}, we give a formal definition of the problem. In Section~\ref{sect:complexity}, we prove that the corresponding decision problem is NP-complete, then we give, in Section~\ref{sect:approx} some results about approximability of the problem. In Section~\ref{sec:linearprog} we derive an linear integer program for the model and run some experiments, then in the next section, we present and compare three different heuristics to solve the problem
+\vspace{-0.5cm}
