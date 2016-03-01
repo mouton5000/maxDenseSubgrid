@@ -14,7 +14,7 @@ Let $M$ be an instance of MMC, $(I,J)$ be a maximal feasible solution and $M' = 
 \begin{proof}
 A 1 in a matrix cannot have more than $8$ neighbors, thus the density of $M'$ is no more than $4n$.
 
-For each line $i$ of $M'$, there is a column $j$ such that $M'_{i,j} = M'_{i+1,j} = 1$, otherwise we could contract line $i$ and $(I,J)$ would not be maximal. Similarly for each column $j$. Thus $d(M') \geq p'+q'$ where $p' \times q'$ is the size of $M'$. From the inequality of arithmetic and geometric means, we have $p' + q ' \geq 2 \sqrt{p'\cdot q'}$ and, as $M'$ contains $n$ 1 entries, $p'\cdot q' \geq n$, $p' + q ' \geq 2 \sqrt{n}$.
+For each line $i$ of $M'$, there is a column $j$ such that $M'_{i,j} = M'_{i+1,j} = 1$, otherwise we could contract line $i$ and $(I,J)$ would not be maximal. Similarly for each column $j$. Thus $d(M') \geq p'+q'$ where $p' \times q'$ is the size of $M'$. From the inequality of arithmetic and geometric means, we have $p' + q ' \geq 2 \sqrt{p'\cdot q'}$ and, as $M'$ contains $n$ entries such that $M'_{i,j} = 1$, $p'\cdot q' \geq n$. Thus $p' + q ' \geq 2 \sqrt{n}$.
 \end{proof}
 
 From the upper bound and the lower bound given in the previous lemma, we can immediately prove the following theorem. 

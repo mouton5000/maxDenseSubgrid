@@ -37,7 +37,7 @@ $A= \prod\limits_{i=1}^{p-1}((L_i-I_p)x_i+I_p)M\prod\limits_{j=q-1}^{1}((C_j-I_q
 
 \subsection{Numerical results}
 
-We test the proposed model using IBM ILOG CPLEX 12.6. The experiments are performed on an Intel i7 CPU at 2.70GHz with 16.0 GB RAM. The models are implemented in Julia using JuMP \cite{Lubin2015}. The algorithm is run on random squared matrices. Given a size $p$ and a probability $r$, we produce a random binary matrix $M$ of size $p \times p$ such that $Pr(M_{i,j} = 1) = r$. The expected value of $n$ is then $r \cdot p^2$. We test the model for $n \in \{6,9,12\}$ for a probability $r \in \{0.1,0.15,0.2,0.25,0.3\}$ and we report the optimal value $v$ and the time $t$ to find the optimal solution. For each value of $p$ and $r$, 10 random instances are created, whose averages are reported on table \ref{tab:lp}
+We test the proposed model using IBM ILOG CPLEX 12.6. The experiments are performed on an Intel i7 CPU at 2.70GHz with 16.0 GB RAM. The models are implemented in Julia using JuMP \cite{Lubin2015}. The algorithm is run on random squared matrices. Given a size $p$ and a probability $r$, we produce a random binary matrix $M$ of size $p \times p$ such that $Pr(M_{i,j} = 1) = r$. The expected value of $n$ is then $r \cdot p^2$. We test the model for $n \in \{6,9,12\}$ for a probability $r \in \{0.1,0.15,0.2,0.25,0.3\}$ and we report the optimal value $d^*$ and the time to find the optimal solution. For each value of $p$ and $r$, 10 random instances are created, whose averages are reported on Table~\ref{tab:lp}.
 \begin{table}[ht!]
 	\centering
 	\def\arraystretch{1.2}
@@ -49,7 +49,7 @@ We test the proposed model using IBM ILOG CPLEX 12.6. The experiments are perfor
 		\hline
 		& \multicolumn{2}{c |}{0.1} & \multicolumn{2}{c |}{0.15} & \multicolumn{2}{c |}{0.20} & \multicolumn{2}{c |}{0.25} & \multicolumn{2}{c |}{0.3} \\
 		\hline
-		& v & t(s) & v & t(s) & v & t(s) & v & t(s) & v & t(s) \\
+		& $d^*$ & time (s) & $d^*$ & time (s) & $d^*$ & time (s) & $d^*$ & time (s) & $d^*$ & time (s) \\
 		\hline
 		(p,q)=(6,6) & 6.0 & 0.3 & 4.1 & 0.26 & 12.1 & 0.2 & 15.3 & 0.28 & 22.0 & 0.15 \\ 
 		\hline
@@ -58,7 +58,7 @@ We test the proposed model using IBM ILOG CPLEX 12.6. The experiments are perfor
 		(p,q)=(12,12) & 30.8 & 171.6 & 48.0 & 281.2 & 55.0 & 183.0 & 64.4 & 101.0 & 71.0 & 95.1 \\ 
 		\hline
 	\end{tabular}
-	\caption{Test of random instances for the linear program model}
+	\caption{Test of random instances for the linear program model.}
 	\label{tab:lp}
 \end{table}
 We notice that the linear model is not very efficient to solve the problem. For $p=15$
