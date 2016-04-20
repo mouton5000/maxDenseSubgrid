@@ -50,11 +50,57 @@ C(M,I,J) = \left(\prod\limits_{k = 1}^{|I|} L_{i_k}\right) \cdot M \cdot \left(\
 $$
 \end{definition}
 
+\begin{example}
+	Let $M$ be the matrix corresponding to the grid $(a)$ of Figure~\ref{fig:introduction:example}. The following contraction gives the grid $(c)$ :
+	
+	$$
+	C(M,[2],[1]) = L_2 \cdot M \dots C_1 = \begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 1 \\
+	0 & 0 & 0 \\
+	\end{pmatrix} \cdot \begin{pmatrix}
+	1 & 0 & 1 \\
+	0 & 0 & 1 \\
+	0 & 1 & 0 \\
+	\end{pmatrix} \cdot \begin{pmatrix}
+	1 & 0 & 0 \\
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	\end{pmatrix} = \begin{pmatrix}
+	1 & 1 & 0 \\
+	1 & 1 & 0 \\
+	0 & 0 & 0 \\
+	\end{pmatrix}
+	$$
+\end{example}
+
 \begin{definition}
 	A contraction $C(M,I,J)$ is said \emph{valid} if and only if $C(M,I,J)$ is a binary matrix.
 \end{definition}
 
-For example, the contraction of the $j$-th column of a matrix such that $M_{i,j} = M_{i,j+1} = 1$ is not valid because it contains a $2$ at line $i$ and column $j$.
+\begin{example}
+	The following contraction is not valid :
+	
+	$$
+	C(M,[1,2]) = L_1 \cdot L_2 \cdot M = \begin{pmatrix}
+	1 & 1 & 0 \\
+	0 & 0 & 1 \\
+	0 & 0 & 0 \\
+	\end{pmatrix} \cdot \begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 1 \\
+	0 & 0 & 0 \\
+	\end{pmatrix} \cdot\begin{pmatrix}
+	1 & 0 & 1 \\
+	0 & 0 & 1 \\
+	0 & 1 & 0 \\
+	\end{pmatrix}  = \begin{pmatrix}
+	1 & 1 & 2 \\
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+	\end{pmatrix}
+	$$
+\end{example}
 
 \begin{definition}
 	\label{def:density}
