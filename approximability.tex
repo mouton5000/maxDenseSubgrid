@@ -1,10 +1,10 @@
 \section{Approximability}
 \label{sect:approx}
 
-In this section we define the notion of maximal feasible solution and prove that every algorithm returning a maximal feasible solution is a $2\sqrt{n}$-approximation.
+In this section we define the notion of maximal feasible solution and prove that every algorithm returning a maximal feasible solution is a $2\sqrt{n}$-approximation where $n$ is the number of 1 in the matrix.
 
 \begin{definition}
-We say a feasible solution is \emph{maximal} if it is not strictly included in another feasible solution. In oher words, when all the lines and columns of that solution are contracted, no contraction of any other line or column is valid.
+We say a feasible solution is \emph{maximal} if it is not strictly included in another feasible solution. In other words, when all the lines and columns of that solution are contracted, no contraction of any other line or column is valid.
 \end{definition}
 
 \begin{lemma}
@@ -26,6 +26,6 @@ An algorithm returning any maximal solution of an instance of MMC is a $2\sqrt{n
 
 Theorem~\ref{theo:sqrtnapprox} proves a default ratio for every algorithm trying to solve the problem. Note that there are instances in which the ratio between an optimal density and the lowest density of a maximal solution is $O(\sqrt{n})$. An example is given in Appendix~\ref{apx:badinstance}. In Section~\ref{sect:heuristics}, we describe three natural heuristics to solve the problem. For two of them returns, the instance of Appendix~\ref{apx:badinstance} may be adapted to show their approximability ratio is $O(\sqrt{n})$. 
 
-Determining if MMC can be approximated to within a constant factor is an open question. As it was already pointed at the end of section~\ref{sect:complexity}, the problem may possibly be not approximable to within $n^{\frac{1}{2}-\varepsilon}$ and this would almost tight the approximability of MMC.
+Determining if MMC can be approximated to within a constant factor is an open question. As it was already pointed at the end of Section~\ref{sect:complexity}, the problem may possibly be not approximable to within $n^{\frac{1}{2}-\varepsilon}$ and this would almost tight the approximability of MMC.
 
 The next two sections focus on efficient algorithms to solve the problem. The next section is dedicated to the mathematical programming methods.

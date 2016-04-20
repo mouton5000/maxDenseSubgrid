@@ -4,47 +4,49 @@
 The following definitions formalize the problem we want to solve with binary matrices. A binary matrix is a matrix with entries from $\{0,1\}$. Such a matrix modelizes a grid in which each dot is a 1 in the matrix.
 
 \begin{definition}
-Let $M$ be a binary matrix with $p$ lines and $q$ columns. For each $I \in \llbracket 1; p-1 \rrbracket$ and each $j \in \llbracket 1; q-1 \rrbracket$, we define the \emph{line contraction matrix} $L_i$ and the \emph{column contraction matrix} $C_j$ by 
+Let $M$ be a binary matrix with $p$ lines and $q$ columns. For each $i \in \llbracket 1; p-1 \rrbracket$\footnote[1]{The meaning of $\llbracket p; q \rrbracket$ is the list $[p+1,p+2,\dots, q]$.} and each $j \in \llbracket 1; q-1 \rrbracket$, we define the \emph{line contraction matrix} $L_i$ and the \emph{column contraction matrix} $C_j$ by 
 \begin{center}
 \scalebox{0.7}{\mbox{$L_i = \hspace{0.2cm}\begin{blockarray}{ccccccccccccc}
-& & & & & & & & & & &\\
+1 & 2 & & & i & & & & & p && \\
 \begin{block}{(cccccccccc)ccc}
-1      &  0     & \cdots & 0      & 0 & 0 &  0  & 0 & \cdots & 0 &&&\\
-0      &  1     & \cdots & 0      & 0 & 0 &  0  & 0 & \cdots & 0 &&&\\
+1      &  0     & \cdots & 0      & 0 & 0 &  0  & 0 & \cdots & 0 &&& 1 \\
+0      &  1     & \cdots & 0      & 0 & 0 &  0  & 0 & \cdots & 0 &&& 2\\
 \vdots & \vdots & \ddots & \vdots & \vdots & \vdots &  \vdots  & \vdots & \ddots  & \vdots  &&&\\
 0      &   0    &\cdots  & 1      & 0 & 0 &  0  & 0 & \cdots & 0 &&&\\ 
 0      &   0    &\cdots  & 0      & 1 & 1 &  0  & 0 & \cdots & 0 & && i\\ 
 0      &   0    &\cdots  & 0      & 0 & 0 &  1  & 0 & \cdots & 0 &&&\\
 0      &   0    &\cdots  & 0      & 0 & 0 &  0  & 1 & \cdots & 0 &&&\\ 
 \vdots      &   \vdots    &\ddots  & \vdots     & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots  &&&\\
-0      &   0    &\cdots  & 0      & 0 & 0  &  0 & 0 & \cdots & 1 &&&\\
-0      &   0    &\cdots  & 0      & 0 & 0      &   0    & 0      &\cdots  & 0 &&&\\
+0      &   0    &\cdots  & 0      & 0 & 0  &  0 & 0 & \cdots & 1 &&& \\
+0      &   0    &\cdots  & 0      & 0 & 0      &   0    & 0      &\cdots  & 0 &&& p\\
 \end{block}
 \end{blockarray}
 \hspace{0.5cm}
-C_j = \hspace{0.2cm}\begin{blockarray}{ccccccccccc}
- & & & & j & & & & &\\
-\begin{block}{(cccccccccc)c}
-1      &  0     & \cdots & 0      & 0 & 0 &  0  & \cdots & 0 & 0 &\\
-0      &  1     & \cdots & 0      & 0 & 0 &  0  & \cdots & 0 & 0 &\\
-\vdots & \vdots & \ddots & \vdots & \vdots & \vdots &  \vdots  & \ddots & \vdots  & \vdots  &\\
-0      &   0    &\cdots  & 1      & 0 & 0 &  0  & \cdots & 0 & 0 &\\ 
-0      &   0    &\cdots  & 0      & 1 & 0 &  0  & \cdots & 0 & 0 &\\ 
-0      &   0    &\cdots  & 0      & 1 & 0 &  0  & \cdots & 0 & 0 &\\
-0      &   0    &\cdots  & 0      & 0 & 1 &  0  & \cdots & 0 & 0 &\\ 
-0      &   0    &\cdots  & 0      & 0 & 0  &  1 & \cdots & 0 & 0 &\\
-\vdots      &   \vdots    &\ddots  & \vdots     & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots  &\\
-0      &   0    &\cdots  & 0      & 0 & 0      &   0    &\cdots  & 1      & 0 &\\
+C_j = \hspace{0.2cm}\begin{blockarray}{ccccccccccccc}
+1 & 2 & & & j & & & & & q &&\\
+\begin{block}{(cccccccccc)ccc}
+1      &  0     & \cdots & 0      & 0 & 0 &  0  & \cdots & 0 & 0 &&& 1 \\
+0      &  1     & \cdots & 0      & 0 & 0 &  0  & \cdots & 0 & 0 &&& 2\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots &  \vdots  & \ddots & \vdots  & \vdots  &&&\\
+0      &   0    &\cdots  & 1      & 0 & 0 &  0  & \cdots & 0 & 0 &&&\\ 
+0      &   0    &\cdots  & 0      & 1 & 0 &  0  & \cdots & 0 & 0 &&& j\\ 
+0      &   0    &\cdots  & 0      & 1 & 0 &  0  & \cdots & 0 & 0 &&&\\
+0      &   0    &\cdots  & 0      & 0 & 1 &  0  & \cdots & 0 & 0 &&&\\ 
+0      &   0    &\cdots  & 0      & 0 & 0  &  1 & \cdots & 0 & 0 &&&\\
+\vdots      &   \vdots    &\ddots  & \vdots     & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots  &&&\\
+0      &   0    &\cdots  & 0      & 0 & 0      &   0    &\cdots  & 1      & 0 &&& q \\
 \end{block}
-\end{blockarray}
+\end{blockarray}.
 $}}
 \end{center}
+
+The size of $L_i$ is $p \times p$ and the size of $C_j$ is $q \times q$.
 \end{definition}
 
 \begin{definition}
-Let $M$ be a binary matrix of size $p \times q$, $I = \{i_1, i_2, \dots, i_{|I|}\}$ a sublist of $\llbracket 1;p-1 \rrbracket$ and $J = \{j_1, j_2, \dots, j_{|I|}\}$ a sublist of $\llbracket 1;q-1 \rrbracket$. We assume $I$ and $J$ are sorted. We define the \emph{contraction $C(M,I,J)$ of the lines $I$ and the columns $J$ of $M$} by the following matrix
+Let $M$ be a binary matrix of size $p \times q$, $I = [i_1, i_2, \dots, i_{|I|}]$ a sublist of $\llbracket 1;p-1 \rrbracket$ and $J = [j_1, j_2, \dots, j_{|I|}]$ a sublist of $\llbracket 1;q-1 \rrbracket$. We assume $I$ and $J$ are sorted. We define the \emph{contraction $C(M,I,J)$ of the lines $I$ and the columns $J$ of $M$} by the following matrix
 $$
-C(M,I,J) = \left(\prod\limits_{k = 1}^{|I|} L_{i_k}\right) \cdot M \cdot \left(\prod\limits_{k = |J|}^{1} C_{j_k}\right)
+C(M,I,J) = \left(\prod\limits_{k = 1}^{|I|} L_{i_k}\right) \cdot M \cdot \left(\prod\limits_{k = |J|}^{1} C_{j_k}\right).
 $$
 \end{definition}
 
@@ -64,7 +66,7 @@ For example, the contraction of the $j$-th column of a matrix such that $M_{i,j}
 \end{definition}
 
 \begin{problem}\label{problem1}
-	\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ such that $n$ entries equal 1 and $p \cdot q - n$ entries equal 0, the Maximum Matrix Contraction problem consists in the search for two sublists $I$ of $\llbracket 1;p-1 \rrbracket$ and $J$ of $\llbracket 1;q-1 \rrbracket$ such that the contraction $C(M,I,J)$ is valid and maximize $d(C(M,I,J))$.
+	\emph{Maximum Matrix Contraction problem} (MMC). Given a binary matrix $M$ of size $p \times q$ such that $n$ entries equal 1 and $p \cdot q - n$ entries equal 0, the Maximum Matrix Contraction problem consists in the search for two sublists $I$ of $\llbracket 1;p-1 \rrbracket$ and $J$ of $\llbracket 1;q-1 \rrbracket$ such that the contraction $C(M,I,J)$ is valid and maximizes $d(C(M,I,J))$.
 \end{problem}
 
 We study in the next two sections the complexity and the approximability of this problem.
