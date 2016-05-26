@@ -51,25 +51,29 @@ $$
 \end{definition}
 
 \begin{example}
-	Let $M$ be the matrix corresponding to the grid $(a)$ of Figure~\ref{fig:introduction:example}. The following contraction gives the grid $(c)$ :
+	Let $M$ be the matrix corresponding to the grid of Figure~\ref{fig:introduction:example}.a. The following contraction gives the grid \ref{fig:introduction:example}.c:
 	
 	$$
-	C(M,[2],[1]) = L_2 \cdot M \dots C_1 = \begin{pmatrix}
-	1 & 0 & 0 \\
-	0 & 1 & 1 \\
-	0 & 0 & 0 \\
+	C(M,[3],[1]) = L_3 \cdot M \cdot C_1 = \begin{pmatrix}
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 1 \\
+	0 & 0 & 0 & 0 \\
 	\end{pmatrix} \cdot \begin{pmatrix}
-	1 & 0 & 1 \\
-	0 & 0 & 1 \\
-	0 & 1 & 0 \\
+	1 & 0 & 0 & 0 \\
+	1 & 0 & 1 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 1 & 0 & 1\\
 	\end{pmatrix} \cdot \begin{pmatrix}
-	1 & 0 & 0 \\
-	1 & 0 & 0 \\
-	0 & 1 & 0 \\
+	1 & 0 & 0 & 0 \\
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
 	\end{pmatrix} = \begin{pmatrix}
-	1 & 1 & 0 \\
-	1 & 1 & 0 \\
-	0 & 0 & 0 \\
+	1 & 0 & 0 & 0 \\
+	1 & 1 & 0 & 0 \\
+	1 & 1 & 1 & 0 \\
+	0 & 0 & 0 & 0 \\
 	\end{pmatrix}
 	$$
 \end{example}
@@ -82,22 +86,26 @@ $$
 	The following contraction is not valid :
 	
 	$$
-	C(M,[1,2]) = L_1 \cdot L_2 \cdot M = \begin{pmatrix}
-	1 & 1 & 0 \\
-	0 & 0 & 1 \\
-	0 & 0 & 0 \\
+	C(M,[],[1,2]) = M \cdot C_2 \cdot C_1 = \begin{pmatrix}
+	1 & 0 & 0 & 0 \\
+	1 & 0 & 1 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 1 & 0 & 1 \\
 	\end{pmatrix} \cdot \begin{pmatrix}
-	1 & 0 & 0 \\
-	0 & 1 & 1 \\
-	0 & 0 & 0 \\
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
 	\end{pmatrix} \cdot\begin{pmatrix}
-	1 & 0 & 1 \\
-	0 & 0 & 1 \\
-	0 & 1 & 0 \\
+	1 & 0 & 0 & 0 \\
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
 	\end{pmatrix}  = \begin{pmatrix}
-	1 & 1 & 2 \\
-	0 & 0 & 0 \\
-	0 & 0 & 0 \\
+	1 & 0 & 0 & 0 \\
+	2 & 0 & 0 & 0 \\
+	1 & 0 & 0 & 0 \\
+	1 & 1 & 0 & 0 \\
 	\end{pmatrix}
 	$$
 \end{example}
