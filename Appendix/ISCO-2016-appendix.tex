@@ -26,12 +26,24 @@
 \usepackage{blkarray}
 \usepackage[symbol]{footmisc}
 \usepackage[tableposition=top]{caption}
+\usepackage[left=2.5cm,right=2.5cm]{geometry}
+
+\usepackage{placeins}
+
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
 
 
 \newcommand{\QQIF}[1] {\State \textbf{if} (#1)}
 \newcommand{\QQRETURN} {\textbf{return} }
 
-\title{The Maximum Matrix Contraction problem}
+\title{The Maximum Matrix Contraction problem : Appendix}
 \author{
 	Dimitri Watel\inst{1,2}
 \and
@@ -84,15 +96,8 @@ In this paper, we introduce the {\it Maximum Matrix Contraction problem}, where 
 \textit{Keywords:} Complexity, Approximation algorithm, Linear Programming
 \end{abstract}
 
-\input{intro}
-\input{definition}
-\input{complexity}
-\input{approximability}
-\input{linear_programming}
-\input{heuristics}
-\input{conclu}
+\appendix
 
-\bibliographystyle{splncs}
-\bibliography{edla}
+\input{badexamples}
 
 \end{document}
