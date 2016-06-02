@@ -10,7 +10,7 @@ This section is dedicated to proving the NP-Completeness of the problem.
   \begin{proof}
  
 
-    Lets $M$ be an instance of MMC. Given an integer $K$, a sublist $I$ of $\llbracket 1; p-1 \rrbracket$ and a sublist $J$ of $\llbracket 1; q-1 \rrbracket$, one can compute in polynomial time the matrix $C(M,I,J)$ and checks if $d(C(M,I,J)) \geq K$. This proves the problem belongs to NP.
+    Let $M$ be an instance of MMC. Given an integer $K$, a sublist $I$ of $\llbracket 1; p-1 \rrbracket$ and a sublist $J$ of $\llbracket 1; q-1 \rrbracket$, we can compute in polynomial time the matrix $C(M,I,J)$ and check if $d(C(M,I,J)) \geq K$. This proves the problem belongs to NP.
 
     In order to prove the NP-Hardness, we describe a polynomial reduction from the NP-Complete Maximum Clique problem \cite{Karp1972}. Lets $G(V,E)$ be an instance of the Maximum Clique problem, we build an instance $M$ of MMC with $p = q = (4|V| + 6)$. We arbitrarily number the nodes of $G$ : $V = \{v_1, v_2, \dots v_{|V|}\}$.
 
