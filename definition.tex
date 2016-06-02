@@ -4,7 +4,7 @@
 The following definitions formalize the problem we want to solve with binary matrices. A binary matrix is a matrix with entries from $\{0,1\}$. Such a matrix modelizes a grid in which each dot is a 1 in the matrix.
 
 \begin{definition}
-Let $M$ be a binary matrix with $p$ lines and $q$ columns. For each $i \in \llbracket 1; p-1 \rrbracket$\footnote[1]{The meaning of $\llbracket p; q \rrbracket$ is the list $[p+1,p+2,\dots, q]$.} and each $j \in \llbracket 1; q-1 \rrbracket$, we define the \emph{line contraction matrix} $L_i$ and the \emph{column contraction matrix} $C_j$ by 
+Let $M$ be a binary matrix with $p$ lines and $q$ columns. For each $i \in \llbracket 1; p-1 \rrbracket$\footnote[1]{The meaning of $\llbracket p; q \rrbracket$ is the list $[p,p+1,\dots, q]$.} and each $j \in \llbracket 1; q-1 \rrbracket$, we define the \emph{line contraction matrix} $L_i$ and the \emph{column contraction matrix} $C_j$ by 
 \begin{center}
 \scalebox{0.7}{\mbox{$L_i = \hspace{0.2cm}\begin{blockarray}{ccccccccccccc}
 1 & 2 & & & i & & & & & p && \\
