@@ -11,22 +11,39 @@ We give, in this appendix, in Figure~\ref{fig:badinstance}, an instance in which
 \input{approx_bad_instance_good}
 \input{approx_bad_instance_bad}
 
-\subsection{Adaptation to the LCL algorithm}
-\renewcommand{\gridsize}{0.35}
-\input{approx_bad_instanceLCL}
-\input{approx_bad_instanceLCL_good}
-\input{approx_bad_instanceLCL_bad}
-
 \subsection{Adaptation to the greedy algorithm}
+
+In Figure~\ref{fig:greedyExample}, we give an instance adapted from the instance of Figure~\ref{fig:badExample}. This instance contains, from coordinates (1,1) to (11,11), is the square of blue 1. An optimal solution is obtained by fully contracting this square. To do so, we have to contract lines and columns 2, 4, 6, 8 and 10 (the blue lines and columns). This is illustrated with Figure~\ref{fig:greedyExampleGood}. The worst maximal solution is obtained by not contracting it. This instance contains also 4 groups of ones in the last 6 columns and the last 6 lines (the green 1). We can increase the density of the matrix by contracting lines 13 and 16 and by contracting columns 13 and 16 (the green lines and columns). However, due to the red 1, it is not allowed to contract all the green lines and columns \textbf{and} all the blue lines and columns. A consequence is that we can either contract all the green 1 or contract all the red 1 (or a part of each). Finally, note that it in not allowed to contract any other line or column.
+
+What does columns or lines the greedy algorithm contract in this instance? The algorithm search for the line or the column such that the contraction of that line or column maximally increases the density of the matrix. It appears that contracting any green line or column increases the density by 10 and that contracting any blue line or column increased the density by 7. Thus, the greedy algorithm chooses one of the green lines or columns and starts again. The same phenomenon occurs in the resulting matrix : an increase of 7 with the blue lines and columns and an increase of 10 with the left green lines and columns. The algorithm then always choose a green line or column until the solution is maximal. The returned solution is given in Figure~\ref{fig:greedyExampleBad}.
+
+
+
 \renewcommand{\gridsize}{0.5}
 \input{approx_bad_instanceGreedy}
 \input{approx_bad_instanceGreedy_good}
 \input{approx_bad_instanceGreedy_bad}
 
 \subsection{Adaptation to the neighborization algorithm}
+
+In Figure~\ref{fig:neighborizationExample}, we give an instance adapted from the instance of Figure~\ref{fig:badExample}. This instance contains, from coordinates (1,1) to (11,11), is the square of blue 1. An optimal solution is obtained by fully contracting this square. To do so, we have to contract lines and columns 2, 4, 6, 8 and 10 (the blue lines and columns). This is illustrated with Figure~\ref{fig:neighborizationExampleGood}. The worst maximal solution is obtained by not contracting it. This instance contains also 4 groups of ones in the last 6 columns and the last 6 lines (the green 1). We can increase the density of the matrix by contracting lines 13,14,15 and 18,19 and by contracting columns 13,14,15 and 18,19 (the green lines and columns). However, due to the red 1, it is not allowed to contract all the green lines and columns \textbf{and} all the blue lines and columns. A consequence is that we can either contract all the green 1 or contract all the red 1 (or a part of each). Finally, note that it in not allowed to contract any other line or column.
+
+What does columns or lines the neighborization algorithm contract in this instance? The algorithm search for the line or the column such that the contraction of that line or column minimally decreases the number of pairs of 1 that can become neighbors. It appears that contracting any green line or column decreases this number by 17 or 18. On the other hand, contracting a blue line or column decreases this number by 20. Thus, the neighborization algorithm chooses one of the green lines or columns and starts again. The same phenomenon occurs in the resulting matrix : an decrease of 20 with the blue lines and columns and an increase of 17 or 18 with the left green lines and columns. The algorithm then always choose a green line or column until the solution is maximal. The returned solution is given in Figure~\ref{fig:neighborizationExample}.
+
+
+\renewcommand{\gridsize}{0.5}
 \input{approx_bad_instanceNeigh}
 \input{approx_bad_instanceNeigh_good}
 \input{approx_bad_instanceNeigh_bad}
+
+\subsection{Adaptation to the LCL algorithm}
+\renewcommand{\gridsize}{0.35}
+
+In Figure~\ref{fig:lclExample}, we give an instance adapted from the instance of Figure~\ref{fig:badExample}.
+
+\input{approx_bad_instanceLCL}
+\input{approx_bad_instanceLCL_good}
+\input{approx_bad_instanceLCL_bad}
 
 \section{Discussion}
 

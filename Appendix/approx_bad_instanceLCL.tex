@@ -1,120 +1,199 @@
-\begin{figure}[ht!]
-    \centering
-
-	
+\begin{figure}
     \begin{tikzpicture}
-        \coordinate (O) at (0,0);
-        \prgrid{O}{41}{41}
-
-        \prone{O}{1}{40};
-
-        \prone{O}{2}{2};
-
-        \prone{O}{3}{9};
-
-        \prone{O}{4}{17};
-
-        \prone{O}{5}{24};
-
-        \prone{O}{6}{38};
-
-        \prone{O}{7}{40};
-
-        \prone{O}{8}{36};
-
-        \prone{O}{9}{3};
-
-        \prone{O}{10}{10};
-
-        \prone{O}{11}{18};
-
-        \prone{O}{12}{25};
-
-        \prone{O}{13}{38};
-
-        \prone{O}{14}{34};
-
-        \prone{O}{15}{36};
-
-        \prone{O}{16}{32};
-
-        \prone{O}{17}{4};
-
-        \prone{O}{18}{11};
-
-        \prone{O}{19}{19};
-
-        \prone{O}{20}{26};
-
-        \prone{O}{21}{34};
-
-        \prone{O}{22}{30};
-
-        \prone{O}{23}{32};
-
-        \prone{O}{24}{5};
-
-        \prone{O}{25}{12};
-
-        \prone{O}{26}{20};
-
-        \prone{O}{27}{27};
-
-        \prone{O}{28}{30};
-        \prone{O}{28}{41};
-
-        \prone{O}{29}{41};
-
-        \prone{O}{30}{22};
-        \prone{O}{30}{28};
-        \prone{O}{30}{41};
-
-        \prone{O}{31}{41};
-
-        \prone{O}{32}{16};
-        \prone{O}{32}{23};
-        \prone{O}{32}{41};
-
-        \prone{O}{33}{41};
-
-        \prone{O}{34}{14};
-        \prone{O}{34}{21};
-        \prone{O}{34}{41};
-
-        \prone{O}{35}{41};
-
-        \prone{O}{36}{8};
-        \prone{O}{36}{15};
-        \prone{O}{36}{41};
-
-        \prone{O}{37}{41};
-
-        \prone{O}{38}{6};
-        \prone{O}{38}{13};
-        \prone{O}{38}{41};
-
-        \prone{O}{39}{41};
-
-        \prone{O}{40}{1};
-        \prone{O}{40}{7};
-        \prone{O}{40}{41};
-
-        \prone{O}{41}{28};
-        \prone{O}{41}{29};
-        \prone{O}{41}{30};
-        \prone{O}{41}{31};
-        \prone{O}{41}{32};
-        \prone{O}{41}{33};
-        \prone{O}{41}{34};
-        \prone{O}{41}{35};
-        \prone{O}{41}{36};
-        \prone{O}{41}{37};
-        \prone{O}{41}{38};
-        \prone{O}{41}{39};
-        \prone{O}{41}{40};
-        \prone{O}{41}{41};
-
-
+    \coordinate (O) at (0,0);
+    \prgrid{O}{40}{41}
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+    \pronec{O}{1}{40}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{2}{2}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{3}{9}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{4}{17}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{5}{24}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+    \pronec{O}{6}{38}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+    \pronec{O}{7}{40}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{8}{3}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+    \pronec{O}{8}{36}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{9}{10}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{10}{18}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{11}{25}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+    \pronec{O}{12}{38}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+    \pronec{O}{13}{34}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+    \pronec{O}{14}{36}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{1.0,0.0,0.0}
+    \pronec{O}{15}{32}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{16}{4}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{17}{11}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{18}{19}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{19}{26}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+    \pronec{O}{20}{34}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{1.0,0.0,0.0}
+    \pronec{O}{21}{30}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{1.0,0.0,0.0}
+    \pronec{O}{22}{32}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{23}{5}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{24}{12}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{25}{20}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{26}{27}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{1.0,0.0,0.0}
+    \pronec{O}{27}{30}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{27}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{28}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{1.0,0.0,0.0}
+    \pronec{O}{29}{22}{tempcolor};
+    \definecolor{tempcolor}{rgb}{1.0,0.0,0.0}
+    \pronec{O}{29}{28}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{29}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{30}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{1.0,0.0,0.0}
+    \pronec{O}{31}{16}{tempcolor};
+    \definecolor{tempcolor}{rgb}{1.0,0.0,0.0}
+    \pronec{O}{31}{23}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{31}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{32}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+    \pronec{O}{33}{14}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+    \pronec{O}{33}{21}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{33}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{34}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+    \pronec{O}{35}{8}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+    \pronec{O}{35}{15}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{35}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{36}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+    \pronec{O}{37}{6}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+    \pronec{O}{37}{13}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{37}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{38}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+    \pronec{O}{39}{1}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+    \pronec{O}{39}{7}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{39}{41}{tempcolor};
+    
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{28}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{29}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{30}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{31}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{32}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{33}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{34}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{35}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{36}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{37}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{38}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{39}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{40}{tempcolor};
+    \definecolor{tempcolor}{rgb}{0.0,0.0,0.0}
+    \pronec{O}{40}{41}{tempcolor};
+    
+    \draw ($(O)+(0,1.575)$) node[anchor=east] {$5$};
+    \draw ($(O)+(0,3.3249999999999997)$) node[anchor=east] {$10$};
+    \draw ($(O)+(0,5.074999999999999)$) node[anchor=east] {$15$};
+    \draw ($(O)+(0,6.824999999999999)$) node[anchor=east] {$20$};
+    \draw ($(O)+(0,8.575)$) node[anchor=east] {$25$};
+    \draw ($(O)+(0,10.325)$) node[anchor=east] {$30$};
+    \draw ($(O)+(0,12.075)$) node[anchor=east] {$35$};
+    \draw ($(O)+(0,13.825)$) node[anchor=east] {$40$};
+    \draw ($(O)+(1.575,-0.3)$) node {$5$};
+    \draw ($(O)+(3.3249999999999997,-0.3)$) node {$10$};
+    \draw ($(O)+(5.074999999999999,-0.3)$) node {$15$};
+    \draw ($(O)+(6.824999999999999,-0.3)$) node {$20$};
+    \draw ($(O)+(8.575,-0.3)$) node {$25$};
+    \draw ($(O)+(10.325,-0.3)$) node {$30$};
+    \draw ($(O)+(12.075,-0.3)$) node {$35$};
+    \draw ($(O)+(13.825,-0.3)$) node {$40$};
+    
     \end{tikzpicture}
     \caption{An example of instance for which an optimal density is $O(\sqrt{n})$ times the density of a solution returned by the LCL algorithm.}
     \label{fig:lclExample}

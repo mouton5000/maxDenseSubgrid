@@ -54,8 +54,8 @@
  ENSIIE, 1 Square de la résistance, Evry, FRANCE
   \email{dimitri.watel@ensiie.fr, }
 \and
-ENSTA Paristech
-  \email{pierre-louis.poirion@ensta-paristech.fr}
+ENSTA Paristech, 828 boulevard des Maréchaux, 91120, Palaieau, FRANCE
+\email{pierre-louis.poirion@ensta-paristech.fr}
 }
 
 \usepackage{caption}
@@ -72,8 +72,12 @@ ENSTA Paristech
 \newcommand{\prvtcolumn}[3]{\draw[very thick] ($(#1)+(\gridsize*#2,0)$) -- ($(#1)+(\gridsize*#2,\gridsize*#3)$);}
 \newcommand{\prvtdline}[3]{\draw[very thick,dotted] ($(#1)+(0,\gridsize*#2)$) -- ($(#1)+(\gridsize*#3,\gridsize*#2)$);}
 \newcommand{\prvtdcolumn}[3]{\draw[very thick,dotted] ($(#1)+(\gridsize*#2,0)$) -- ($(#1)+(\gridsize*#2,\gridsize*#3)$);}
+
+\newcommand{\prvtdlinec}[4]{\draw[very thick,dotted,color=#4] ($(#1)+(0,\gridsize*#2)$) -- ($(#1)+(\gridsize*#3,\gridsize*#2)$);}
+\newcommand{\prvtdcolumnc}[4]{\draw[very thick,dotted,color=#4] ($(#1)+(\gridsize*#2,0)$) -- ($(#1)+(\gridsize*#2,\gridsize*#3)$);}
+
 \newcommand{\prone}[3]{\draw ($(#1)+(#3*\gridsize-0.5*\gridsize,#2*\gridsize-0.5*\gridsize)$) node {$1$};}
-\newcommand{\prbul}[3]{\draw ($(#1)+(#3*\gridsize-0.5*\gridsize,#2*\gridsize-0.5*\gridsize)$) node {$\bullet$};}
+\newcommand{\pronec}[4]{\draw[color=#4] ($(#1)+(#3*\gridsize-0.5*\gridsize,#2*\gridsize-0.5*\gridsize)$) node {$1$};}
 
 
 \renewenvironment{comment}{\begingroup\sffamily\color{red} \itshape}{\endgroup}
