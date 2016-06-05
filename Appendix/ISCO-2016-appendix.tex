@@ -76,6 +76,8 @@ ENSTA Paristech, 828 boulevard des Maréchaux, 91120, Palaieau, FRANCE
 \newcommand{\prvtdlinec}[4]{\draw[very thick,dotted,color=#4] ($(#1)+(0,\gridsize*#2)$) -- ($(#1)+(\gridsize*#3,\gridsize*#2)$);}
 \newcommand{\prvtdcolumnc}[4]{\draw[very thick,dotted,color=#4] ($(#1)+(\gridsize*#2,0)$) -- ($(#1)+(\gridsize*#2,\gridsize*#3)$);}
 
+\newcommand{\prvtrectc}[6]{\draw[very thick,color=#6] ($(#1)+(#3*\gridsize,#2*\gridsize)$) rectangle ($(#1)+(#5*\gridsize,#4*\gridsize)$);}
+
 \newcommand{\prone}[3]{\draw ($(#1)+(#3*\gridsize-0.5*\gridsize,#2*\gridsize-0.5*\gridsize)$) node {$1$};}
 \newcommand{\pronec}[4]{\draw[color=#4] ($(#1)+(#3*\gridsize-0.5*\gridsize,#2*\gridsize-0.5*\gridsize)$) node {$1$};}
 

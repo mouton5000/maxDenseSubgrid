@@ -291,6 +291,33 @@
 \draw ($(O)+(9.75,-0.3)$) node {$20$};
 \draw ($(O)+(12.25,-0.3)$) node {$25$};
 
+\definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+	\prvtdlinec{O}{2}{25}{tempcolor};
+	\prvtdlinec{O}{4}{25}{tempcolor};
+	\prvtdlinec{O}{6}{25}{tempcolor};
+	\prvtdlinec{O}{8}{25}{tempcolor};
+	\prvtdlinec{O}{10}{25}{tempcolor};
+	
+\definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+	\prvtdlinec{O}{13}{25}{tempcolor};
+	\prvtdlinec{O}{16}{25}{tempcolor};
+
+
+\definecolor{tempcolor}{rgb}{0.0,0.0,1.0}
+\prvtdcolumnc{O}{2}{25}{tempcolor};
+\prvtdcolumnc{O}{4}{25}{tempcolor};
+\prvtdcolumnc{O}{6}{25}{tempcolor};
+\prvtdcolumnc{O}{8}{25}{tempcolor};
+\prvtdcolumnc{O}{10}{25}{tempcolor};
+
+\prvtrectc{O}{0}{0}{11}{11}{tempcolor};
+
+\definecolor{tempcolor}{rgb}{0.0,0.3921568691730499,0.0}
+\prvtdcolumnc{O}{13}{25}{tempcolor};
+\prvtdcolumnc{O}{16}{25}{tempcolor};
+\prvtrectc{O}{10}{19}{19}{25}{tempcolor};
+\prvtrectc{O}{19}{10}{25}{19}{tempcolor};
+
     \end{tikzpicture}
     \caption{An example of instance for which an optimal density is $O(\sqrt{n})$ times the density of a solution returned by the Greedy algorithm.}
     \label{fig:greedyExample}
