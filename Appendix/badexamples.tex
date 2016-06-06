@@ -5,11 +5,15 @@
 
 Theorem~\ref{theo:sqrtnapprox} of Section~\ref{sect:approx} proves a default $2\sqrt{n}$ upper bound of the approximation ratio for every algorithm returning a maximal solution.
 
-We give, in this appendix, in Figure~\ref{fig:badinstance}, an instance in which the ratio between an optimal density and the lowest density of a maximal solution is $O(\sqrt{n})$.
+We give, in this appendix, in Figure~\ref{fig:badExample}, an instance in which the ratio between an optimal density and the lowest density of a maximal solution is $O(\sqrt{n})$. This instance contains a square of $r \times r$ blue ones (in Figure~\ref{fig:badExample}, $r = 4$) and two diagonal lines of $r$ red ones and $r$ green ones. Note that, as $r$ approaches infinity, $r^2$ is asymptotically equivalent to $n$. An optimal solution, given in Figure~\ref{fig:badexampleGood}, consists in maximally contracting the blue square. In that case, most of the blue ones have 8 neighbors (the maximum number of neighbor an entry can have in the matrix). The density of this matrix is $O(r^2) = O(n)$. On the contrary, an algorithm which contracts the lines containing the green ones and the columns containing the red ones would obtain the matrix in Figure~\ref{fig:badExampleBad}. In this matrix, no line or column can be contracted and most of the blue ones have no neighbor. The density is $O(r) = O(\sqrt{n})$. 
 
 \input{approx_bad_instance}
 \input{approx_bad_instance_good}
 \input{approx_bad_instance_bad}
+
+
+
+Note that this is not a hard instance for the greedy algorithm, the neighborization algorithm or the LCL algorithm to this instance as the density of the resulting matrix of each algorithm is $O(n)$. Indeed, the greedy algorithm and the neighborization contract the blue square first. The LCL algorithm either contracts all the lines of the matrix or contracts all the columns: every blue one has at least one neighbor and the density is $O(r^2)$. However, for each algorithm, we can adapt this instance such that the density returned by this algorithm is $O(\sqrt{n})$. Each of the following subsections is dedicated to an algorithm and its adapted instance. 
 
 \subsection{Adaptation to the greedy algorithm}
 
