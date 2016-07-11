@@ -1,0 +1,92 @@
+\begin{figure}[!ht]
+	\center
+	\begin{tikzpicture}
+		\coordinate (O) at (0,0);
+		
+		\clip (-1,-1.25) rectangle (2.5,2.1);
+		
+		\prgrid{O}{4}{4}
+		
+		\prvtdline{O}{1}{4};
+		
+		\prvtdcolumn{O}{1}{4};
+		\prvtdcolumn{O}{2}{4};
+		\prvtdcolumn{O}{3}{4};
+		
+		\prone{O}{1}{2}
+		\prone{O}{1}{4}
+		\prone{O}{2}{3}
+		\prone{O}{3}{1}
+		\prone{O}{3}{3}
+		\prone{O}{4}{1}
+		
+		
+		\draw ($(O)+(-0,0.25)$) node[anchor=east] {$4$};
+		\draw ($(O)+(-0,0.75)$) node[anchor=east] {$3$};
+		\draw ($(O)+(-0,1.25)$) node[anchor=east] {$2$};
+		\draw ($(O)+(-0,1.75)$) node[anchor=east] {$1$};
+		
+		\draw ($(O)+(0.25,-0.3)$) node {$1$};
+		\draw ($(O)+(0.75,-0.3)$) node {$2$};
+		\draw ($(O)+(1.25,-0.3)$) node {$3$};
+		\draw ($(O)+(1.75,-0.3)$) node {$4$};
+		
+		\draw ($(O)+(1,-0.8)$) node {$(a)$};
+		
+	\end{tikzpicture}
+	\begin{tikzpicture}
+	\coordinate (O) at (0,0);
+	
+	\clip (-1,-1.25) rectangle (2.5,2.1);
+	
+	\prgrid{O}{3}{4}
+	
+	\prone{O}{1}{2}
+	\prone{O}{1}{3}
+	\prone{O}{1}{4}
+	\prone{O}{2}{1}
+	\prone{O}{2}{3}
+	\prone{O}{3}{1}
+		
+	\prvtdcolumn{O}{1}{3};
+	
+	
+	\draw ($(O)+(-0,0.25)$) node[anchor=east] {$3/4$};
+	\draw ($(O)+(-0,0.75)$) node[anchor=east] {$2$};
+	\draw ($(O)+(-0,1.25)$) node[anchor=east] {$1$};
+	
+	\draw ($(O)+(0.25,-0.3)$) node {$1$};
+	\draw ($(O)+(0.75,-0.3)$) node {$2$};
+	\draw ($(O)+(1.25,-0.3)$) node {$3$};
+	\draw ($(O)+(1.75,-0.3)$) node {$4$};
+	\draw ($(O)+(1,-0.8)$) node {$(b)$};
+	\end{tikzpicture}
+	\begin{tikzpicture}
+	\coordinate (O) at (0,0);
+	
+	\clip (-1,-1.25) rectangle (2.5,2.1);
+	
+	\prgrid{O}{3}{3}
+	
+	\prone{O}{1}{1}
+	\prone{O}{1}{2}
+	\prone{O}{1}{3}
+	\prone{O}{2}{1}
+	\prone{O}{2}{2}
+	\prone{O}{3}{1}
+	
+	
+	\draw ($(O)+(-0,0.25)$) node[anchor=east] {$3/4$};
+	\draw ($(O)+(-0,0.75)$) node[anchor=east] {$2$};
+	\draw ($(O)+(-0,1.25)$) node[anchor=east] {$1$};
+	
+	\draw ($(O)+(0.25,-0.3)$) node {$1/2$};
+	\draw ($(O)+(0.75,-0.3)$) node {$3$};
+	\draw ($(O)+(1.25,-0.3)$) node {$4$};
+	\draw ($(O)+(0.75,-0.8)$) node {$(c)$};
+	
+	\end{tikzpicture}
+	\caption{In Figure~\ref{fig:introduction:example}.a, we give a $4 \times 4$ matrix containing 6 ones. The entries containing a zero are not written for readability. Valid contractions are represented by dotted lines and columns. It is not allowed to contract lines 1 and 2 because the two ones (1;1) and (2;1) would be brought into the same entry. Figure~\ref{fig:introduction:example}.b is the result of the contraction of lines 3 and 4 and Figure~\ref{fig:introduction:example}.c is the contraction of columns 1 and 2. The density (the number of neighbor pairs) of each matrix is respectively 4, 7 and 10.
+  }
+	\label{fig:introduction:example}
+\end{figure}

@@ -1,0 +1,15 @@
+We first briefly recall the definition of the Maximum Matrix contraction problem (MMC) introduced in \cite{WP16}. We are given a binary matrix (in which some entries contain a one and others contains a zero). Two lines $i$ and $i+1$ of the grid can be contracted by shifting up every one of line $i+1$ and of every line after. Two columns $j$ and $j+1$ of the grid can be contracted by shifting left the corresponding ones. However, such a contraction is not allowed if two ones are brought into the same entry. The purpose is to maximize the number of neighbor pairs of ones (including the diagonal ones). The measure is called the \emph{density} of the matrix. An illustration is given in Figure~\ref{fig:introduction:example}. 
+
+\input{introduction_example}
+
+In \cite{WP16}, we give three polynomial time heuristic algorithms for (MMC).
+\begin{itemize}
+	\item The greedy algorithm in which, at each iteration, we choose the line or column maximizing the increase of density of the matrix.
+	\item The LCL algorithm which computes two maximally contracted matrices: the LC solution, in which we first contract a maximal set of lines and then contract a maximal set of columns; and the CL solution, in which we start with the columns and end with the lines. The LCL algorithm returns the solution with maximum density.
+	\item The neighborization algorithm in which, at each iteration, we search for the line or the column such that the contraction of that line or column minimally decreases the number of pairs of 1 that can become neighbors. 
+\end{itemize}
+We prove in \cite{WP16} that those three algorithms are $2\sqrt{n}$-approximation algorithms.
+
+The next section is dedicated to giving an example of instance in which there is a $O(\sqrt{n})$ ratio between the density of an optimal solution and the density of the worst feasible solution, where $n$ is the number of ones in the matrix. Each of the three subsections adapts that instance in order to prove that the approximation ratio of each of the three previous algorithms is not better than $O(\sqrt{n})$.
+
+The last section gives a conjecture. 
